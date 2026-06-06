@@ -33,6 +33,13 @@ jobs:
           npm install
           npm run build
 
+      - name: 🏗️ Commit Built Assets (so FTP Action uploads them)
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -f public/build
+          git commit -m "Add built frontend assets" || echo "No changes to commit"
+
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
