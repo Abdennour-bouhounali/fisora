@@ -1,0 +1,147 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "FISORA",
+    "subtitle": "The best of Algerian nature, pure and artisanal.",
+    "cta": "Explore our products"
+  },
+  "about": {
+    "title": "Tradition & Purity",
+    "subtitle": "Our Story",
+    "mission_title": "Our Mission",
+    "mission_text": "FISORA values natural flavors through carefully dried fruit, vegetable, and plant powders. Our mission is to offer simple, natural, and practical products for everyday cooking and beverages.",
+    "story_title": "A Passion Passed Down",
+    "story_text": "The adventure began with a simple idea: capturing the essence of Algerian nature in a practical format without losing a bit of its richness. Each pouch of FISORA tells a story of patience, sun, and respect for the earth.",
+    "process": {
+      "title": "Our Quality Process",
+      "step1_title": "Rigorous Selection",
+      "step1_desc": "We choose only the best fruits and plants, harvested at perfect maturity.",
+      "step2_title": "Gentle Drying",
+      "step2_desc": "A slow low-temperature process to preserve vitamins and aromas.",
+      "step3_title": "Fine Grinding",
+      "step3_desc": "An artisanal transformation to obtain a powder of exceptional fineness."
+    }
+  },
+  "products": {
+    "title": "Our Essences",
+    "subtitle": "A rigorous selection of natural powders to enhance your everyday cooking.",
+    "price": "DA",
+    "discover": "Discover product",
+    "badges": {
+      "natural": "100% Natural",
+      "organic": "Organic"
+    }
+  },
+  "usages": {
+    "title": "The Art of Using Our Powders",
+    "subtitle": "Creative Inspirations",
+    "culinary_title": "Gourmet Cooking",
+    "culinary_desc": "Enhance your dishes and marinades with the aromatic intensity of our natural powders.",
+    "beverages_title": "Vitality Drinks",
+    "beverages_desc": "Add a touch of freshness to your teas, smoothies, and detox waters in an instant.",
+    "wellness_title": "Natural Wellness",
+    "wellness_desc": "Enjoy the benefits of dried plants and fruits for your daily health routine.",
+    "lemon_title": "Citrus Freshness",
+    "lemon_desc": "A pinch in your cold water for an instant detox and energizing drink.",
+    "orange_title": "Pastry Sweetness",
+    "orange_desc": "Enhance your cakes and biscuits with the aromatic intensity of dried orange.",
+    "mint_title": "Oriental Tea",
+    "mint_desc": "Get the authentic taste of mint tea in an instant, without fresh leaves.",
+    "cooking_title": "Gourmet Cooking",
+    "cooking_desc": "Garlic and onion powder for marinades and sauces with deep, authentic flavor.",
+    "recipes_title": "Natural Recipes",
+    "recipes_desc": "Let your imagination run wild for 100% healthy culinary creations."
+  },
+  "contact": {
+    "title": "Let's Talk Nature",
+    "subtitle": "Contact Us",
+    "desc": "A question? A project? We are here to advise you on our natural products.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email",
+      "message": "Your Message",
+      "send": "Send Message",
+      "placeholder_name": "Your name",
+      "placeholder_email": "your@email.com",
+      "placeholder_message": "How can we help you?"
+    },
+    "info": {
+      "title": "Contact Details",
+      "address": "Algiers, Algeria",
+      "phone": "+213 555 00 00 00",
+      "email": "contact@fisora.com",
+      "social": "Follow Us"
+    }
+  },
+  "footer": {
+    "brand_desc": "The quintessence of Algerian nature, transformed with passion and expertise to enhance your culinary creations.",
+    "links_title": "Navigation",
+    "products_title": "Our Powders",
+    "contact_title": "Contact",
+    "copyright": "All rights reserved.",
+    "made_in": "Made with passion in Algeria"
+  },
+  "showcase": {
+    "title": "Design & Purity",
+    "subtitle": "Our Showcase",
+    "desc": "A premium aluminium doypack (90x150 mm) designed to preserve the freshness and intense aromas of our natural powders."
+  },
+  "seo": {
+    "home_title": "Home",
+    "home_desc": "Discover the best of Algerian nature with our natural dried fruit, vegetable, and plant powders. Pure, artisanal, and 100% natural.",
+    "products_title": "Our Products",
+    "products_desc": "Explore our range of natural powders: Lemon, Orange, Mint, Garlic, and Onion. Absolute purity for your recipes.",
+    "about_title": "About Us",
+    "about_desc": "The story of FISORA, our mission to promote Algerian terroir, and our artisanal drying process.",
+    "contact_title": "Contact",
+    "contact_desc": "Contact FISORA for any questions about our natural products or collaborations."
+  },
+  "transformation": {
+    "section_label": "The Process",
+    "step_of": "Step {{current}} of {{total}}",
+    "moisture_label": "Moisture content",
+    "intensity_label": "Flavor intensity",
+    "steps": [
+      {
+        "eyebrow": "01 — Harvest",
+        "title": "The Fresh Harvest",
+        "desc": "Vibrant Mediterranean oranges picked at peak ripeness, bursting with natural sugars and essential oils.",
+        "details": ["Harvested at 90% color development", "High Brix sugar content", "Cold-chain preserved"],
+        "caption": "Fresh whole oranges"
+      },
+      {
+        "eyebrow": "02 — Preparation",
+        "title": "Careful Preparation",
+        "desc": "Oranges are washed, inspected, and sliced to uniform thickness for perfectly even dehydration.",
+        "details": ["4mm precision slicing", "No additives or preservatives", "Food-grade handling"],
+        "caption": "Sliced & prepared"
+      },
+      {
+        "eyebrow": "03 — Dehydration",
+        "title": "Slow Dehydration",
+        "desc": "Gentle heat removes water over 18–24 hours, protecting volatile aroma compounds and vitamins.",
+        "details": ["50–60°C controlled temperature", "Airflow-optimized trays", "Moisture drops to 12%"],
+        "caption": "Gentle drying in progress"
+      },
+      {
+        "eyebrow": "04 — Concentration",
+        "title": "Flavor Concentration",
+        "desc": "As water evaporates, flavor compounds intensify. Every gram carries the punch of a whole orange.",
+        "details": ["10× flavor concentration", "Natural Maillard browning", "Aroma fully locked in"],
+        "caption": "Essence concentrated"
+      },
+      {
+        "eyebrow": "05 — Final Product",
+        "title": "FISORA Orange Powder",
+        "desc": "Shelf-stable, intensely flavored, ready for premium food and beverage applications worldwide.",
+        "details": ["12-month shelf life", "No cold chain required", "1 kg replaces 10 kg fresh"],
+        "caption": "FISORA ready"
+      }
+    ]
+  }
+}

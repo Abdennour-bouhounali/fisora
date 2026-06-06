@@ -1,0 +1,36 @@
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite"
+    },
+    "devDependencies": {
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^3.1",
+        "mongoose": "^9.6.3",
+        "mysql2": "^3.22.5",
+        "vite": "^8.0.0"
+    },
+    "dependencies": {
+        "@inertiajs/inertia": "^0.11.1",
+        "@inertiajs/react": "^3.3.1",
+        "@vitejs/plugin-react": "^6.0.2",
+        "autoprefixer": "^10.5.0",
+        "axios": "^1.17.0",
+        "framer-motion": "^12.40.0",
+        "i18next": "^26.3.1",
+        "i18next-browser-languagedetector": "^8.2.1",
+        "i18next-http-backend": "^4.0.0",
+        "lucide-react": "^1.17.0",
+        "postcss": "^8.5.15",
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7",
+        "react-hot-toast": "^2.6.0",
+        "react-i18next": "^17.0.8",
+        "react-router-dom": "^7.17.0",
+        "recharts": "^3.8.1",
+        "tailwindcss": "^3.4.19"
+    }
+}
