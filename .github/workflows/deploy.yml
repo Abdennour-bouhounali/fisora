@@ -6,26 +6,15 @@ on:
       - main
 
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  deploy:
+    name: 🚀 Fast Deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🚚 Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: 🐘 Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.4'
-          coverage: none
-
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: 📂 Deploy to Hostinger FTP
+      - name: Deploy via FTP (incremental sync)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -34,27 +23,24 @@ jobs:
           port: 21
           protocol: ftp
           server-dir: /domains/fisora.shop/public_html/
-          # Makes future deployments much faster
-          state-name: .ftp-deploy-sync-state.json
-          # Increase timeout for large Laravel uploads
-          timeout: 60000
+
+          # 🔥 THIS is what makes it FAST
+          state-name: .ftp-deploy-state.json
+
+          # 🚫 DO NOT upload heavy/repeated folders
           exclude: |
             **/.git*
-            vendor/**
-            **/.git*/**
             **/.github/**
             **/.vscode/**
             **/.idea/**
             **/node_modules/**
             **/tests/**
-            **/.env
-            **/.env.*
+            **/.env*
             storage/logs/**
             storage/framework/cache/**
             storage/framework/sessions/**
             storage/framework/views/**
             README.md
-            .editorconfig
-            .gitattributes
             .gitignore
+            .editorconfig
             phpunit.xml
