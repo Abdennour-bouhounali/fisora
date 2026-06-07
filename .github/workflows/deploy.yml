@@ -29,6 +29,7 @@ jobs:
 
           # 🚫 DO NOT upload heavy/repeated folders
           exclude: |
+            **/vendor/**
             **/.git*
             **/.github/**
             **/.vscode/**

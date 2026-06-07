@@ -66,7 +66,7 @@ const Products = ({ products }) => {
             transition={{ delay: 0.4 }}
             className="text-xl text-nature-green/60 font-light max-w-2xl leading-relaxed"
           >
-            Une gamme de saveurs authentiques, séchées avec soin pour préserver toute l'intensité de la nature.
+            Une gamme de saveurs authentiques, séchées avec soin pour préserver l'intensité de la nature.
           </motion.p>
         </div>
 
