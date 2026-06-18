@@ -37,7 +37,7 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-            //
+            'coming_soon_mode' => (bool) config('shop.coming_soon_mode', true),
         ];
     }
 }

@@ -10,6 +10,89 @@
     "subtitle": "The best of Algerian nature, pure and artisanal.",
     "cta": "Explore our products"
   },
+  "hero_section": {
+    "title_p1": "Real Ingredients.",
+    "title_p2": "Smarter Cooking.",
+    "subtitle": "FISORA helps people eat and cook in a smarter way, transforming real Mediterranean fruits, vegetables, and herbs into concentrated pantry essentials that make everyday meals easier, healthier, and more convenient.",
+    "btn_shop": "Shop Ingredients",
+    "btn_how": "See How It Works",
+    "available": "Available Essences",
+    "essences": {
+      "garlic": "Garlic",
+      "onion": "Purple Onion",
+      "mint": "Mint",
+      "strawberry": "Strawberry",
+      "base": "Mediterranean Base"
+    },
+    "badges": {
+      "b1": "100% Real Ingredients",
+      "b2": "No Additives",
+      "b3": "Naturally Dehydrated",
+      "b4": "Mediterranean Sourced"
+    }
+  },
+  "home_page": {
+    "marquee": {
+      "t1": "100% Natural",
+      "t2": "No Preservatives",
+      "t3": "Smart Ingredients",
+      "t4": "Daily Essentials"
+    },
+    "collection": "Our Collection",
+    "essence_p1": "The essence of",
+    "essence_p2": "purity",
+    "view_all": "View entire shop",
+    "usages_sub": "Inspirations",
+    "usages_title": "How to use it",
+    "cta_title_p1": "Rediscover the taste",
+    "cta_title_p2": "of authenticity",
+    "cta_btn": "Our Expertise",
+    "cta_100": "100%",
+    "cta_desc": "Natural & Artisanal",
+    "features": {
+      "f1_title": "Artisanal Drying",
+      "f1_desc": "We preserve the soul of each ingredient through gentle drying at low temperatures.",
+      "f2_title": "Zero Additives",
+      "f2_desc": "Our powders are pure: no added sugar, no salt, no preservatives.",
+      "f3_title": "Concentrated Flavors",
+      "f3_desc": "A single spoonful is enough to transform your dishes with unique aromatic intensity."
+    }
+  },
+  "product_detail": {
+    "not_found": "Product not found",
+    "back_to_products": "Back to products",
+    "breadcrumbs": {
+      "home": "Home",
+      "products": "Products"
+    },
+    "badge_natural": "100% Natural",
+    "add_to_cart": "Add to cart",
+    "ingredients": "Ingredients",
+    "usage": "Usage",
+    "specs": {
+      "title": "Technical Details",
+      "weight": "Weight",
+      "category": "Category",
+      "availability": "Availability",
+      "in_stock": "In stock",
+      "out_of_stock": "Out of stock",
+      "format": "Format",
+      "format_val": "Dehydrated powder",
+      "na": "N/A"
+    },
+    "logistics": {
+      "title": "FISORA Logistics",
+      "shipping_title": "Shipping Algeria 58 Wilayas",
+      "shipping_desc": "We ship your orders within 24 hours with our trusted logistics partners.",
+      "pack_title": "Premium Doypack",
+      "pack_desc": "Airtight packaging with resealable zip to guarantee absolute freshness for 12 months."
+    },
+    "related": {
+      "title": "Explore more",
+      "view_all": "View all"
+    },
+    "mobile_add": "Add"
+  },
   "about": {
     "title": "Tradition & Purity",
     "subtitle": "Our Story",
@@ -19,12 +102,18 @@
     "story_text": "The adventure began with a simple idea: capturing the essence of Algerian nature in a practical format without losing a bit of its richness. Each pouch of FISORA tells a story of patience, sun, and respect for the earth.",
     "process": {
       "title": "Our Quality Process",
+      "subtitle": "Every step is a promise of purity and excellence.",
       "step1_title": "Rigorous Selection",
       "step1_desc": "We choose only the best fruits and plants, harvested at perfect maturity.",
       "step2_title": "Gentle Drying",
       "step2_desc": "A slow low-temperature process to preserve vitamins and aromas.",
       "step3_title": "Fine Grinding",
       "step3_desc": "An artisanal transformation to obtain a powder of exceptional fineness."
+    },
+    "trust": {
+      "t1": "Certified Quality",
+      "t2": "100% Natural",
+      "t3": "Algerian Know-How"
     }
   },
   "products": {
@@ -32,9 +121,31 @@
     "subtitle": "A rigorous selection of natural powders to enhance your everyday cooking.",
     "price": "DA",
     "discover": "Discover product",
+    "order": "Order Now",
     "badges": {
       "natural": "100% Natural",
       "organic": "Organic"
+    }
+  },
+  "products_page": {
+    "collection": "Purity Collection",
+    "title_p1": "Our natural",
+    "title_p2": "products",
+    "description": "A range of authentic flavors, carefully dried to preserve the intensity of nature.",
+    "no_products": "No products available at the moment.",
+    "benefits": {
+      "natural": {
+        "title": "100% Natural",
+        "desc": "No additives, no preservatives. Just the purity of the plant."
+      },
+      "quality": {
+        "title": "Guaranteed Quality",
+        "desc": "An artisanal drying process mastered from A to Z."
+      },
+      "intensity": {
+        "title": "Intensity",
+        "desc": "Exceptional concentration for tenfold flavors."
+      }
     }
   },
   "usages": {
@@ -143,5 +254,47 @@
         "caption": "FISORA ready"
       }
     ]
+  },
+  "coming_soon": {
+    "banner": {
+      "title": "Fisora is launching soon",
+      "description": "Be among the first to experience our Mediterranean concentrated ingredients.",
+      "btn": "Join Early Access"
+    },
+    "badge": "Launching Soon",
+    "message": "We are preparing our first production run. Join the waitlist to get priority access and exclusive launch offers.",
+    "waitlist_form": {
+      "title": "Join the Waitlist",
+      "subtitle": "Register now to secure your priority access.",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "country": "Country",
+      "city": "City",
+      "product_interest": "Which product interests you most?",
+      "submit": "Join Waitlist",
+      "success": "Thank you! You have been added to the Fisora early access list.",
+      "errors": {
+        "required": "This field is required",
+        "email": "Please enter a valid email"
+      }
+    },
+    "b2b": {
+      "nav": "Fisora for Businesses",
+      "title": "Fisora for Businesses",
+      "subtitle": "Partner with us to bring the essence of the Mediterranean to your kitchen.",
+      "intro": "We provide premium concentrated ingredients for restaurants, cafés, caterers, and food businesses. Request early partnership access below.",
+      "form": {
+        "business_name": "Business Name",
+        "contact_name": "Contact Name",
+        "email": "Email",
+        "phone": "Phone",
+        "business_type": "Type of Business",
+        "monthly_usage": "Monthly Ingredient Usage",
+        "products_of_interest": "Products of Interest",
+        "submit": "Request Early Partnership Access",
+        "success": "Thank you! Your B2B request has been submitted. Our team will contact you shortly."
+      }
+    }
   }
 }

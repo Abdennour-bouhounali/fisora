@@ -50,8 +50,8 @@ const Hero = ({ containerVariants, itemVariants }) => {
               variants={itemVariants}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-nature-green leading-[1.1] mb-6 md:mb-8 tracking-tight"
             >
-              Real Ingredients.<br />
-              <span className="italic font-light">Smarter Cooking.</span>
+              {t('hero_section.title_p1')}<br />
+              <span className="italic font-light">{t('hero_section.title_p2')}</span>
             </motion.h1>
 
             {/* SUBHEADLINE */}
@@ -59,44 +59,44 @@ const Hero = ({ containerVariants, itemVariants }) => {
               variants={itemVariants}
               className="text-base sm:text-lg md:text-xl text-nature-green/70 mb-8 md:mb-10 leading-relaxed max-w-2xl font-light"
             >
-              FISORA helps people eat and cook in a smarter way, transforming real Mediterranean fruits, vegetables, and herbs into concentrated pantry essentials that make everyday meals easier, healthier, and more convenient.
+              {t('hero_section.subtitle')}
             </motion.p>
 
             {/* CTA */}
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-5 mb-10 md:mb-12">
               <Link href="/products" className="btn-premium btn-primary text-base md:text-lg px-6 py-3 md:px-8 md:py-4 group justify-center flex items-center">
-                Shop Ingredients
+                {t('hero_section.btn_shop')}
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
               <button className="btn-premium btn-secondary text-base md:text-lg px-6 py-3 md:px-8 md:py-4 flex items-center justify-center gap-2 group">
                 <PlayCircle className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
-                See How It Works
+                {t('hero_section.btn_how')}
               </button>
             </motion.div>
 
             {/* PRODUCT PREVIEW */}
             <motion.div variants={itemVariants} className="mb-12">
-              <p className="text-xs uppercase tracking-widest text-nature-green/50 mb-4 font-semibold">Available Essences</p>
+              <p className="text-xs uppercase tracking-widest text-nature-green/50 mb-4 font-semibold">{t('hero_section.available')}</p>
               <div className="flex flex-wrap gap-2 text-sm text-nature-green/80 font-medium">
-                <span>Garlic</span>
+                <span>{t('hero_section.essences.garlic')}</span>
                 <span className="text-nature-orange/40">•</span>
-                <span>Purple Onion</span>
+                <span>{t('hero_section.essences.onion')}</span>
                 <span className="text-nature-orange/40">•</span>
-                <span>Mint</span>
+                <span>{t('hero_section.essences.mint')}</span>
                 <span className="text-nature-orange/40">•</span>
-                <span>Strawberry</span>
+                <span>{t('hero_section.essences.strawberry')}</span>
                 <span className="text-nature-orange/40">•</span>
-                <span>Mediterranean Base</span>
+                <span>{t('hero_section.essences.base')}</span>
               </div>
             </motion.div>
 
             {/* TRUST BAR */}
             <motion.div variants={itemVariants} className="grid grid-cols-2 md:flex flex-wrap gap-x-4 md:gap-x-8 gap-y-4 items-center pt-6 md:pt-8 border-t border-nature-beige">
               {[
-                { text: "100% Real Ingredients", icon: Leaf },
-                { text: "No Additives", icon: ShieldCheck },
-                { text: "Naturally Dehydrated", icon: Droplets },
-                { text: "Mediterranean Sourced", icon: CheckCircle2 }
+                { text: t('hero_section.badges.b1'), icon: Leaf },
+                { text: t('hero_section.badges.b2'), icon: ShieldCheck },
+                { text: t('hero_section.badges.b3'), icon: Droplets },
+                { text: t('hero_section.badges.b4'), icon: CheckCircle2 }
               ].map((badge, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <badge.icon className="w-4 h-4 text-nature-orange flex-shrink-0" />

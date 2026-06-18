@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return Inertia::render('Contact');
     }
+
+    public function b2b()
+    {
+        return Inertia::render('B2b');
+    }
 }

@@ -1,19 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { Leaf, Plus } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Button from '../common/Button';
 import { useCart } from '../../context/CartContext';
+import { useWaitlist } from '../../context/WaitlistContext';
+import axios from 'axios';
 
 import { getImageUrl } from '../../utils/formatters';
 
 const ProductCard = ({ product, variants, view = 'grid' }) => {
   const { t, i18n } = useTranslation();
   const { addToCart } = useCart();
+  const { openWaitlist } = useWaitlist();
+  const { props } = usePage();
+  const coming_soon_mode = !!props.coming_soon_mode;
 
   const lang = i18n.language;
-  const name = product.name ? (product.name[lang] || product.name.fr) : 'Produit';
+  const name = product.name ? (product.name[lang] || product.name.fr) : t('products.title');
   const description = product.description ? (product.description[lang] || product.description.fr) : '';
   const id = product._id || product.id;
   const image = product.images ? getImageUrl(product.images[0]) : (product.image || product.img);
@@ -49,26 +54,44 @@ const ProductCard = ({ product, variants, view = 'grid' }) => {
             {description}
           </p>
           
-          <div className="flex items-center gap-4">
+          {coming_soon_mode ? (
             <Button 
               onClick={(e) => {
                 e.preventDefault();
-                addToCart(product, 1);
+                axios.post('/analytics/track', {
+                  product_slug: product.slug,
+                  product_id: product.id,
+                  interaction_type: 'cta_click',
+                  language: lang,
+                }).catch(() => {});
+                openWaitlist(name);
               }}
-              className="flex-grow py-4"
+              className="w-full py-4 text-xs font-black uppercase tracking-widest"
             >
-              Commander
+              {t('coming_soon.waitlist_form.submit')}
             </Button>
-            <button 
-              onClick={(e) => {
-                e.preventDefault();
-                addToCart(product, 1);
-              }}
-              className="w-14 h-14 border border-nature-beige rounded-2xl flex items-center justify-center hover:bg-nature-beige transition-colors group/btn"
-            >
-              <Plus className="w-6 h-6 text-nature-green group-hover/btn:rotate-90 transition-transform duration-300" />
-            </button>
-          </div>
+          ) : (
+            <div className="flex items-center gap-4">
+              <Button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  addToCart(product, 1);
+                }}
+                className="flex-grow py-4"
+              >
+                {t('products.order')}
+              </Button>
+              <button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  addToCart(product, 1);
+                }}
+                className="w-14 h-14 border border-nature-beige rounded-2xl flex items-center justify-center hover:bg-nature-beige transition-colors group/btn"
+              >
+                <Plus className="w-6 h-6 text-nature-green group-hover/btn:rotate-90 transition-transform duration-300" />
+              </button>
+            </div>
+          )}
         </div>
       </Link>
     </motion.div>

@@ -5,6 +5,7 @@ import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
 import { CartProvider } from './context/CartContext';
+import { WaitlistProvider } from './context/WaitlistContext';
 
 import MainLayout from './components/layout/MainLayout';
 import AdminLayout from './components/admin/AdminLayout';
@@ -29,9 +30,11 @@ createInertiaApp({
     setup({ el, App, props }) {
         const root = createRoot(el);
         root.render(
-            <CartProvider>
-                <App {...props} />
-            </CartProvider>
+            <WaitlistProvider>
+                <CartProvider>
+                    <App {...props} />
+                </CartProvider>
+            </WaitlistProvider>
         );
     },
     progress: {

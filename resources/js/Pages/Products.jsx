@@ -49,7 +49,7 @@ const Products = ({ products }) => {
             className="flex items-center gap-3 mb-6"
           >
             <div className="h-[1px] w-12 bg-nature-orange" />
-            <span className="text-nature-orange font-bold tracking-[0.2em] text-xs uppercase">Collection Pureté</span>
+            <span className="text-nature-orange font-bold tracking-[0.2em] text-xs uppercase">{t('products_page.collection')}</span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -57,8 +57,8 @@ const Products = ({ products }) => {
             transition={{ delay: 0.2 }}
             className="text-5xl md:text-[5.5rem] font-bold text-nature-green mb-8 tracking-tight leading-tight"
           >
-            Nos produits <br />
-            <span className="italic font-light">naturelles</span>
+            {t('products_page.title_p1')} <br />
+            <span className="italic font-light">{t('products_page.title_p2')}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -66,7 +66,7 @@ const Products = ({ products }) => {
             transition={{ delay: 0.4 }}
             className="text-xl text-nature-green/60 font-light max-w-2xl leading-relaxed"
           >
-            Une gamme de saveurs authentiques, séchées avec soin pour préserver l'intensité de la nature.
+            {t('products_page.description')}
           </motion.p>
         </div>
 
@@ -78,7 +78,7 @@ const Products = ({ products }) => {
         >
           {productList.length === 0 ? (
             <div className="col-span-full py-20 text-center">
-              <p className="text-nature-green/40 font-bold uppercase tracking-widest">Aucun produit disponible pour le moment.</p>
+              <p className="text-nature-green/40 font-bold uppercase tracking-widest">{t('products_page.no_products')}</p>
             </div>
           ) : (
             productList.map((product) => (
@@ -101,9 +101,9 @@ const Products = ({ products }) => {
           className="grid md:grid-cols-3 gap-12"
         >
           {[
-            { icon: Leaf, title: "100% Naturel", desc: "Aucun additif, aucun conservateur. Juste la pureté de la plante." },
-            { icon: ShieldCheck, title: "Qualité Garantie", desc: "Un processus de séchage artisanal maîtrisé de A à Z." },
-            { icon: Sparkles, title: "Intensité", desc: "Une concentration exceptionnelle pour des saveurs décuplées." },
+            { icon: Leaf, title: t('products_page.benefits.natural.title'), desc: t('products_page.benefits.natural.desc') },
+            { icon: ShieldCheck, title: t('products_page.benefits.quality.title'), desc: t('products_page.benefits.quality.desc') },
+            { icon: Sparkles, title: t('products_page.benefits.intensity.title'), desc: t('products_page.benefits.intensity.desc') },
           ].map((benefit, i) => (
             <motion.div key={i} variants={itemVariants} className="text-center p-8">
               <benefit.icon className="w-12 h-12 text-nature-orange mx-auto mb-6" />

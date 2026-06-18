@@ -10,6 +10,89 @@
     "subtitle": "Le meilleur de la nature algérienne, pur et artisanal.",
     "cta": "Découvrir nos produits"
   },
+  "hero_section": {
+    "title_p1": "Vrais Ingrédients.",
+    "title_p2": "Cuisine Intelligente.",
+    "subtitle": "FISORA aide à cuisiner et manger plus intelligemment, en transformant de vrais fruits, légumes et herbes méditerranéens en essentiels de garde-manger concentrés qui rendent les repas quotidiens plus faciles, sains et pratiques.",
+    "btn_shop": "Découvrir les ingrédients",
+    "btn_how": "Comment ça marche",
+    "available": "Essences disponibles",
+    "essences": {
+      "garlic": "Ail",
+      "onion": "Oignon Rouge",
+      "mint": "Menthe",
+      "strawberry": "Fraise",
+      "base": "Base Méditerranéenne"
+    },
+    "badges": {
+      "b1": "100% Vrais Ingrédients",
+      "b2": "Sans Additifs",
+      "b3": "Naturellement Déshydraté",
+      "b4": "Origine Méditerranéenne"
+    }
+  },
+  "home_page": {
+    "marquee": {
+      "t1": "100% Naturel",
+      "t2": "Sans Conservateurs",
+      "t3": "Ingrédients Intelligents",
+      "t4": "L'Essentiel au Quotidien"
+    },
+    "collection": "Notre Collection",
+    "essence_p1": "L'essence de la",
+    "essence_p2": "pureté",
+    "view_all": "Voir toute la boutique",
+    "usages_sub": "Inspirations",
+    "usages_title": "Comment l'utiliser",
+    "cta_title_p1": "Redécouvrez le goût",
+    "cta_title_p2": "de l'authentique",
+    "cta_btn": "Notre Savoir-Faire",
+    "cta_100": "100%",
+    "cta_desc": "Naturel & Artisanal",
+    "features": {
+      "f1_title": "Séchage Artisanal",
+      "f1_desc": "Nous préservons l'âme de chaque ingrédient par un séchage doux à basse température.",
+      "f2_title": "Zéro Additifs",
+      "f2_desc": "Nos poudres sont pures : pas de sucre ajouté, pas de sel, pas d'agents de conservation.",
+      "f3_title": "Concentré d'Arômes",
+      "f3_desc": "Une seule cuillère suffit pour transformer vos plats avec une intensité aromatique unique."
+    }
+  },
+  "product_detail": {
+    "not_found": "Produit introuvable",
+    "back_to_products": "Retour aux produits",
+    "breadcrumbs": {
+      "home": "Accueil",
+      "products": "Produits"
+    },
+    "badge_natural": "100% Naturel",
+    "add_to_cart": "Ajouter au panier",
+    "ingredients": "Ingrédients",
+    "usage": "Utilisation",
+    "specs": {
+      "title": "Détails Techniques",
+      "weight": "Poids",
+      "category": "Catégorie",
+      "availability": "Disponibilité",
+      "in_stock": "En stock",
+      "out_of_stock": "Rupture de stock",
+      "format": "Format",
+      "format_val": "Poudre déshydratée",
+      "na": "N/A"
+    },
+    "logistics": {
+      "title": "Logistique FISORA",
+      "shipping_title": "Expédition Algérie 58 Wilayas",
+      "shipping_desc": "Nous expédions vos commandes sous 24h avec nos partenaires logistiques de confiance.",
+      "pack_title": "Pack Doypack Premium",
+      "pack_desc": "Emballage hermétique avec zip refermable pour garantir une fraîcheur absolue pendant 12 mois."
+    },
+    "related": {
+      "title": "Explorer davantage",
+      "view_all": "Tout voir"
+    },
+    "mobile_add": "Ajouter"
+  },
   "about": {
     "title": "Tradition & Pureté",
     "subtitle": "Notre Histoire",
@@ -19,12 +102,18 @@
     "story_text": "L'aventure a commencé avec une idée simple : capturer l'essence de la nature algérienne dans un format pratique sans perdre une miette de sa richesse. Chaque sachet de FISORA raconte une histoire de patience, de soleil et de respect pour la terre.",
     "process": {
       "title": "Notre Processus Qualité",
+      "subtitle": "Chaque étape est une promesse de pureté et d'excellence.",
       "step1_title": "Sélection Rigoureuse",
       "step1_desc": "Nous choisissons uniquement les meilleurs fruits et plantes, récolتés à maturité parfaite.",
       "step2_title": "Séchage Doux",
       "step2_desc": "Un processus lent à basse température pour préserver vitamines et arômes.",
       "step3_title": "Mouture Fine",
       "step3_desc": "Une transformation artisanale pour obtenir une poudre d'une finesse exceptionnelle."
+    },
+    "trust": {
+      "t1": "Qualité Certifiée",
+      "t2": "100% Naturel",
+      "t3": "Savoir-faire Algérien"
     }
   },
   "products": {
@@ -32,9 +121,31 @@
     "subtitle": "Une sélection rigoureuse de poudres naturelles pour sublimer votre cuisine au quotidien.",
     "price": "DA",
     "discover": "Découvrir le produit",
+    "order": "Commander",
     "badges": {
       "natural": "100% Naturel",
       "organic": "Biologique"
+    }
+  },
+  "products_page": {
+    "collection": "Collection Pureté",
+    "title_p1": "Nos produits",
+    "title_p2": "naturels",
+    "description": "Une gamme de saveurs authentiques, séchées avec soin pour préserver l'intensité de la nature.",
+    "no_products": "Aucun produit disponible pour le moment.",
+    "benefits": {
+      "natural": {
+        "title": "100% Naturel",
+        "desc": "Aucun additif, aucun conservateur. Juste la pureté de la plante."
+      },
+      "quality": {
+        "title": "Qualité Garantie",
+        "desc": "Un processus de séchage artisanal maîtrisé de A à Z."
+      },
+      "intensity": {
+        "title": "Intensité",
+        "desc": "Une concentration exceptionnelle pour des saveurs décuplées."
+      }
     }
   },
   "usages": {
@@ -143,5 +254,47 @@
         "caption": "FISORA prête à l'emploi"
       }
     ]
+  },
+  "coming_soon": {
+    "banner": {
+      "title": "Fisora arrive bientôt",
+      "description": "Faites partie des premiers à découvrir nos ingrédients méditerranéens concentrés.",
+      "btn": "Accès Anticipé"
+    },
+    "badge": "Bientôt Disponible",
+    "message": "Nous préparons actuellement notre première production. Rejoignez la liste d'attente pour bénéficier d'un accès prioritaire et d'offres exclusives.",
+    "waitlist_form": {
+      "title": "Rejoindre la liste d'attente",
+      "subtitle": "Inscrivez-vous dès maintenant pour garantir votre accès prioritaire.",
+      "name": "Nom",
+      "email": "E-mail",
+      "phone": "Téléphone (optionnel)",
+      "country": "Pays",
+      "city": "Ville",
+      "product_interest": "Quel produit vous intéresse le plus ?",
+      "submit": "Rejoindre la liste d'attente",
+      "success": "Merci ! Vous avez été ajouté à la liste d'accès anticipé Fisora.",
+      "errors": {
+        "required": "Ce champ est obligatoire",
+        "email": "Veuillez entrer un e-mail valide"
+      }
+    },
+    "b2b": {
+      "nav": "Fisora pour les Entreprises",
+      "title": "Fisora pour les Entreprises",
+      "subtitle": "Collaborez avec nous pour apporter l'essence de la Méditerranée dans vos cuisines.",
+      "intro": "Nous fournissons des ingrédients concentrés de qualité supérieure pour les restaurants, cafés, traiteurs et entreprises agroalimentaires. Demandez un accès partenarial anticipé ci-dessous.",
+      "form": {
+        "business_name": "Nom de l'entreprise",
+        "contact_name": "Nom du contact",
+        "email": "E-mail",
+        "phone": "Téléphone",
+        "business_type": "Type d'entreprise",
+        "monthly_usage": "Consommation mensuelle d'ingrédients",
+        "products_of_interest": "Produits d'intérêt",
+        "submit": "Demander un accès partenarial anticipé",
+        "success": "Merci ! Votre demande B2B a été soumise. Notre équipe vous contactera sous peu."
+      }
+    }
   }
 }

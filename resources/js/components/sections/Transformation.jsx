@@ -100,7 +100,7 @@ const Transformation = () => {
     <section
       ref={containerRef}
       className="relative"
-      style={{ height: `${steps.length * 200}vh` }}
+      style={{ height: `${steps.length * 90}vh` }}
     >
       {/* Sticky viewport */}
       <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">

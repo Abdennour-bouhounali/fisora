@@ -15,6 +15,7 @@ import {
 
 const MENU_ITEMS = [
   { name: 'Vue d\'ensemble', icon: LayoutDashboard, path: '/admin/dashboard' },
+  { name: 'Leads & Waitlist', icon: Users, path: '/admin/leads' },
   { name: 'Produits', icon: Package, path: '/admin/products' },
   { name: 'Commandes', icon: ShoppingBag, path: '/admin/orders' },
   { name: 'Clients', icon: Users, path: '/admin/customers' },

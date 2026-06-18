@@ -9,7 +9,7 @@ import { getImageUrl } from '../../utils/formatters';
 const AdminProductForm = ({ product, onSuccess, onClose }) => {
   const [activeTab, setActiveTab] = useState('FR');
   const [loading, setLoading] = useState(false);
-  
+
   const [formData, setFormData] = useState({
     name: '',
     slug: '',
@@ -31,6 +31,7 @@ const AdminProductForm = ({ product, onSuccess, onClose }) => {
         description: product.description || '',
         stock: product.stock || 0,
         is_active: product.is_active ?? true,
+        images: product.images || []
       }));
     }
   }, [product]);
@@ -42,7 +43,7 @@ const AdminProductForm = ({ product, onSuccess, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    
+
     if (product) {
       router.patch(`/admin/products/${product.id}`, formData, {
         onSuccess: () => {
@@ -97,9 +98,9 @@ const AdminProductForm = ({ product, onSuccess, onClose }) => {
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-2 md:col-span-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-nature-green/40 ml-4">Nom du produit</label>
-              <input 
-                type="text" 
-                value={formData.name} 
+              <input
+                type="text"
+                value={formData.name}
                 onChange={(e) => handleChange('name', e.target.value)}
                 className="w-full bg-white border border-nature-beige rounded-2xl py-4 px-6 text-sm font-bold text-nature-green outline-none focus:ring-2 focus:ring-nature-green"
                 required
@@ -107,17 +108,17 @@ const AdminProductForm = ({ product, onSuccess, onClose }) => {
             </div>
             <div className="space-y-2 md:col-span-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-nature-green/40 ml-4">Description</label>
-              <textarea 
+              <textarea
                 rows="5"
-                value={formData.description} 
+                value={formData.description}
                 onChange={(e) => handleChange('description', e.target.value)}
                 className="w-full bg-white border border-nature-beige rounded-2xl py-4 px-6 text-sm font-bold text-nature-green outline-none focus:ring-2 focus:ring-nature-green"
               />
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-nature-green/40 ml-4">Catégorie</label>
-              <select 
-                value={formData.category} 
+              <select
+                value={formData.category}
                 onChange={(e) => handleChange('category', e.target.value)}
                 className="w-full bg-white border border-nature-beige rounded-2xl py-4 px-6 text-sm font-bold text-nature-green outline-none focus:ring-2 focus:ring-nature-green appearance-none"
                 required
@@ -131,9 +132,9 @@ const AdminProductForm = ({ product, onSuccess, onClose }) => {
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-nature-green/40 ml-4">Prix (DA)</label>
-              <input 
-                type="number" 
-                value={formData.price} 
+              <input
+                type="number"
+                value={formData.price}
                 onChange={(e) => handleChange('price', e.target.value)}
                 className="w-full bg-white border border-nature-beige rounded-2xl py-4 px-6 text-sm font-bold text-nature-green outline-none focus:ring-2 focus:ring-nature-green"
                 required
@@ -141,9 +142,9 @@ const AdminProductForm = ({ product, onSuccess, onClose }) => {
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-nature-green/40 ml-4">Stock</label>
-              <input 
-                type="number" 
-                value={formData.stock} 
+              <input
+                type="number"
+                value={formData.stock}
                 onChange={(e) => handleChange('stock', e.target.value)}
                 className="w-full bg-white border border-nature-beige rounded-2xl py-4 px-6 text-sm font-bold text-nature-green outline-none focus:ring-2 focus:ring-nature-green"
                 required
@@ -151,8 +152,8 @@ const AdminProductForm = ({ product, onSuccess, onClose }) => {
             </div>
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-nature-green/40 ml-4">Statut Actif</label>
-              <select 
-                value={formData.is_active} 
+              <select
+                value={formData.is_active}
                 onChange={(e) => handleChange('is_active', e.target.value === 'true')}
                 className="w-full bg-white border border-nature-beige rounded-2xl py-4 px-6 text-sm font-bold text-nature-green outline-none focus:ring-2 focus:ring-nature-green appearance-none"
               >
@@ -160,19 +161,45 @@ const AdminProductForm = ({ product, onSuccess, onClose }) => {
                 <option value="false">Inactif</option>
               </select>
             </div>
-            
+
             {/* Image Manager Section */}
-            <div className="md:col-span-2">
-               <div className="flex gap-2 mt-4">
-                 {formData.images && formData.images.map((img, i) => (
-                   <div key={i} className="relative w-20 h-20 rounded-xl overflow-hidden border border-nature-beige">
-                     <img src={getImageUrl(img)} className="w-full h-full object-cover" />
-                     <button type="button" onClick={() => setFormData(prev => ({ ...prev, images: prev.images.filter((_, idx) => idx !== i) }))} className="absolute top-0 right-0 p-1 bg-nature-orange text-white rounded-bl-lg">
-                       <Trash2 className="w-3 h-3" />
-                     </button>
-                   </div>
-                 ))}
-               </div>
+            <div className="md:col-span-2 space-y-4">
+              <label className="text-[10px] font-black uppercase tracking-widest text-nature-green/40 ml-4">
+                Images du produit
+              </label>
+
+              {/* ✅ Actually render the ImageUpload component */}
+              <ImageUpload
+                onUploadSuccess={(url) =>
+                  setFormData(prev => ({
+                    ...prev,
+                    images: [...(prev.images || []), url]
+                  }))
+                }
+              />
+
+              {/* Existing images preview */}
+              {formData.images && formData.images.length > 0 && (
+                <div className="flex flex-wrap gap-3 mt-4">
+                  {formData.images.map((img, i) => (
+                    <div key={i} className="relative w-20 h-20 rounded-xl overflow-hidden border border-nature-beige">
+                      <img src={getImageUrl(img)} className="w-full h-full object-cover" alt={`product-${i}`} />
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setFormData(prev => ({
+                            ...prev,
+                            images: prev.images.filter((_, idx) => idx !== i)
+                          }))
+                        }
+                        className="absolute top-0 right-0 p-1 bg-nature-orange text-white rounded-bl-lg"
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         )}
@@ -187,15 +214,15 @@ const AdminProductForm = ({ product, onSuccess, onClose }) => {
 
       {/* Sticky Bottom Actions */}
       <div className="sticky bottom-0 bg-white/80 backdrop-blur-md pt-6 pb-2 border-t border-nature-beige flex justify-end gap-4 z-20">
-        <button 
-          type="button" 
+        <button
+          type="button"
           onClick={onClose}
           className="px-8 py-4 border border-nature-beige rounded-2xl text-xs font-black uppercase tracking-widest text-nature-green/40 hover:bg-nature-beige/30 transition-all"
         >
           Annuler
         </button>
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           disabled={loading}
           className="px-10 py-4 bg-nature-green text-nature-white rounded-2xl text-xs font-black uppercase tracking-widest flex items-center gap-2 shadow-xl hover:shadow-nature-green/20 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50"
         >

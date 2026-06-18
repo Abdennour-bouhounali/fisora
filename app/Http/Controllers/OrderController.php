@@ -13,11 +13,19 @@ class OrderController extends Controller
 {
     public function create()
     {
+        if (config('shop.coming_soon_mode', true)) {
+            abort(403, 'Purchasing is temporarily disabled.');
+        }
+
         return Inertia::render('Checkout');
     }
 
     public function store(Request $request)
     {
+        if (config('shop.coming_soon_mode', true)) {
+            abort(403, 'Purchasing is temporarily disabled.');
+        }
+
         $validated = $request->validate([
             'customer_name'  => 'required|string|max:255',
             'customer_email' => 'required|email',

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/b2b', [HomeController::class, 'b2b'])->name('b2b');
 
 // Products
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -24,6 +25,11 @@ Route::get('/checkout', [OrderController::class, 'create'])->name('orders.create
 Route::post('/checkout', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/track', [OrderController::class, 'track'])->name('orders.track');
 
+// Leads & Analytics
+Route::post('/waitlist', [\App\Http\Controllers\LeadController::class, 'storeWaitlist'])->name('waitlist.store');
+Route::post('/b2b-leads', [\App\Http\Controllers\LeadController::class, 'storeB2b'])->name('b2b.store');
+Route::post('/analytics/track', [\App\Http\Controllers\LeadController::class, 'trackInteraction'])->name('analytics.track');
+
 // ─── Admin Auth Routes ──────────────────────────────────────────────────────────
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -33,6 +39,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Protected admin routes
     Route::middleware(\App\Http\Middleware\EnsureIsAdmin::class)->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+        Route::get('/leads', [\App\Http\Controllers\Admin\AdminLeadController::class, 'index'])->name('leads.index');
 
         // Products CRUD
         Route::resource('products', AdminProductController::class)->except(['show', 'edit', 'create']);
@@ -45,6 +52,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 // ─── File Upload ────────────────────────────────────────────────────────────────
-Route::post('/upload', [UploadController::class, 'store'])
+Route::post('/api/upload', [UploadController::class, 'store'])
     ->middleware(['auth', \App\Http\Middleware\EnsureIsAdmin::class])
     ->name('upload');

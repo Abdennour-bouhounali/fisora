@@ -80,7 +80,7 @@ const About = () => {
           >
             <div className="rounded-[4rem] overflow-hidden shadow-2xl border-[1px] border-nature-beige/20 bg-nature-white p-4">
               <img 
-                src="/fisora_hero_premium_1778746442341.png" 
+                src="/images/about_hero_premium.png" 
                 alt="FISORA - Natural Heritage" 
                 loading="lazy"
                 className="w-full h-auto rounded-[3rem] shadow-inner"
@@ -101,7 +101,7 @@ const About = () => {
           >
             <div className="rounded-[4rem] overflow-hidden shadow-2xl border-[1px] border-nature-beige/20 bg-nature-white p-4">
               <img 
-                src="/fisora_founder_story_1778750127594.png" 
+                src="/images/about_process_story.png" 
                 alt="Artisanat FISORA - The Process" 
                 loading="lazy"
                 className="w-full h-auto rounded-[3rem] shadow-inner"
@@ -139,7 +139,7 @@ const About = () => {
             {t('about.process.title')}
           </h2>
           <p className="text-xl text-nature-green/60 font-light">
-            Chaque étape est une promesse de pureté et d'excellence.
+            {t('about.process.subtitle')}
           </p>
         </div>
 
@@ -173,15 +173,15 @@ const About = () => {
         >
            <div className="flex items-center gap-4">
              <ShieldCheck className="w-12 h-12 text-nature-green" />
-             <span className="text-2xl font-black uppercase tracking-widest text-nature-green">Qualité Certifiée</span>
+             <span className="text-2xl font-black uppercase tracking-widest text-nature-green">{t('about.trust.t1')}</span>
            </div>
            <div className="flex items-center gap-4">
              <Sparkles className="w-12 h-12 text-nature-green" />
-             <span className="text-2xl font-black uppercase tracking-widest text-nature-green">100% Naturel</span>
+             <span className="text-2xl font-black uppercase tracking-widest text-nature-green">{t('about.trust.t2')}</span>
            </div>
            <div className="flex items-center gap-4">
              <Leaf className="w-12 h-12 text-nature-green" />
-             <span className="text-2xl font-black uppercase tracking-widest text-nature-green">Savoir-faire Algérien</span>
+             <span className="text-2xl font-black uppercase tracking-widest text-nature-green">{t('about.trust.t3')}</span>
            </div>
         </motion.div>
       </Section>

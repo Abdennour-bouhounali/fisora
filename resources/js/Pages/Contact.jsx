@@ -93,8 +93,8 @@ const Contact = () => {
               <h3 className="text-sm font-black uppercase tracking-[0.3em] text-nature-green/40 mb-8">Coordonnées</h3>
               <div className="space-y-10">
                 {[
-                  { icon: MapPin, label: "Adresse", value: "El Atteuf, Ghardaia, Algérie" },
-                  { icon: Phone, label: "Téléphone", value: "+213 (0) 5 58 89 55 60" },
+                  { icon: MapPin, label: "Adresse", value: "Toulouse, France" },
+                  { icon: Phone, label: "Téléphone", value: "+33 (0) 7 83 06 94 65" },
                   { icon: Mail, label: "Email", value: "contact@fisora.shop" },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6 group">
@@ -110,7 +110,7 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants}>
+            {/* <motion.div variants={itemVariants}>
               <h3 className="text-sm font-black uppercase tracking-[0.3em] text-nature-green/40 mb-8">Réseaux Sociaux</h3>
               <div className="flex gap-4">
                 {[
@@ -126,7 +126,7 @@ const Contact = () => {
                   </a>
                 ))}
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Contact Form Container */}

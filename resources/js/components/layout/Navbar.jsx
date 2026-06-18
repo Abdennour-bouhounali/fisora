@@ -12,9 +12,15 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const { t, i18n } = useTranslation();
-  const { url } = usePage();
+  const { url, props } = usePage();
+  const coming_soon_mode = !!props.coming_soon_mode;
   const isScrolled = useScroll(20);
   const { cartCount, setIsCartOpen } = useCart();
+
+  const links = [...NAV_LINKS];
+  if (coming_soon_mode) {
+    links.push({ name: 'coming_soon.b2b.nav', path: '/b2b' });
+  }
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -45,7 +51,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-12">
             <div className="flex items-center gap-8">
-              {NAV_LINKS.map((link) => (
+              {links.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
@@ -64,24 +70,26 @@ const Navbar = () => {
             {/* Icons & Language */}
             <div className="flex items-center gap-4">
               {/* Cart Button */}
-              <button 
-                onClick={() => setIsCartOpen(true)}
-                className="relative p-3 bg-nature-beige/30 rounded-xl text-nature-green hover:bg-nature-green hover:text-nature-white transition-all duration-300 group"
-              >
-                <ShoppingBag className="w-5 h-5" />
-                <AnimatePresence>
-                  {cartCount > 0 && (
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      exit={{ scale: 0 }}
-                      className="absolute -top-1 -right-1 w-5 h-5 bg-nature-orange text-nature-white text-[10px] font-black rounded-full flex items-center justify-center shadow-sm"
-                    >
-                      {cartCount}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </button>
+              {!coming_soon_mode && (
+                <button 
+                  onClick={() => setIsCartOpen(true)}
+                  className="relative p-3 bg-nature-beige/30 rounded-xl text-nature-green hover:bg-nature-green hover:text-nature-white transition-all duration-300 group"
+                >
+                  <ShoppingBag className="w-5 h-5" />
+                  <AnimatePresence>
+                    {cartCount > 0 && (
+                      <motion.span
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        exit={{ scale: 0 }}
+                        className="absolute -top-1 -right-1 w-5 h-5 bg-nature-orange text-nature-white text-[10px] font-black rounded-full flex items-center justify-center shadow-sm"
+                      >
+                        {cartCount}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
+              )}
 
               <div className="relative">
                 <button 
@@ -121,17 +129,19 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 md:hidden">
-            <button 
-              onClick={() => setIsCartOpen(true)}
-              className="relative p-3 bg-nature-beige/30 rounded-xl text-nature-green"
-            >
-              <ShoppingBag className="w-5 h-5" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-nature-orange text-nature-white text-[8px] font-black rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </button>
+            {!coming_soon_mode && (
+              <button 
+                onClick={() => setIsCartOpen(true)}
+                className="relative p-3 bg-nature-beige/30 rounded-xl text-nature-green"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-4 h-4 bg-nature-orange text-nature-white text-[8px] font-black rounded-full flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+            )}
             <button onClick={() => setIsOpen(!isOpen)} className="p-3 bg-nature-beige/30 rounded-xl text-nature-green">
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -149,7 +159,7 @@ const Navbar = () => {
             className="md:hidden bg-nature-white border-t border-nature-beige/30 overflow-hidden"
           >
             <div className="px-4 py-8 space-y-6">
-              {NAV_LINKS.map((link) => (
+              {links.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}

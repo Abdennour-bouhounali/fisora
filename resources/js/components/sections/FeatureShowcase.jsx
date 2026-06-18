@@ -2,12 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Section from '../ui/Section';
 import { Leaf, ShieldCheck, Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const FeatureShowcase = ({ containerVariants, itemVariants }) => {
+  const { t } = useTranslation();
   const features = [
-    { icon: Leaf, title: "Séchage Artisanal", desc: "Nous préservons l'âme de chaque ingrédient par un séchage doux à basse température." },
-    { icon: ShieldCheck, title: "Zéro Additifs", desc: "Nos poudres sont pures : pas de sucre ajouté, pas de sel, pas d'agents de conservation." },
-    { icon: Sparkles, title: "Concentré d'Arômes", desc: "Une seule cuillère suffit pour transformer vos plats avec une intensité aromatique unique." },
+    { icon: Leaf, title: t('home_page.features.f1_title'), desc: t('home_page.features.f1_desc') },
+    { icon: ShieldCheck, title: t('home_page.features.f2_title'), desc: t('home_page.features.f2_desc') },
+    { icon: Sparkles, title: t('home_page.features.f3_title'), desc: t('home_page.features.f3_desc') },
   ];
 
   return (

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Link, Head } from '@inertiajs/react';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link, Head, usePage } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import { 
   ChevronRight, 
@@ -19,25 +20,43 @@ import Button from '../components/common/Button';
 import ProductCard from '../components/ui/ProductCard';
 import MainLayout from '../components/layout/MainLayout';
 import { useCart } from '../context/CartContext';
+import { useWaitlist } from '../context/WaitlistContext';
 import { getImageUrl } from '../utils/formatters';
+import axios from 'axios';
 
 const ProductDetail = ({ product, related }) => {
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
   const { addToCart } = useCart();
+  const { openWaitlist } = useWaitlist();
+  const { props } = usePage();
+  const coming_soon_mode = !!props.coming_soon_mode;
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+
+  useEffect(() => {
+    if (coming_soon_mode && product) {
+      axios.post('/analytics/track', {
+        product_slug: product.slug,
+        product_id: product.id,
+        interaction_type: 'view',
+        language: lang,
+      }).catch(() => {});
+    }
+  }, [product, coming_soon_mode, lang]);
 
   if (!product) return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-nature-white space-y-6">
-      <Head title="Produit introuvable" />
-        <h2 className="text-3xl font-black text-nature-green uppercase">Produit introuvable</h2>
+      <Head title={t('product_detail.not_found')} />
+        <h2 className="text-3xl font-black text-nature-green uppercase">{t('product_detail.not_found')}</h2>
         <Link href="/products">
-          <Button>Retour aux produits</Button>
+          <Button>{t('product_detail.back_to_products')}</Button>
         </Link>
       </div>
   );
 
-  const name = product.name || 'Produit';
-  const description = product.description || '';
+  const name = product.name ? (product.name[lang] || product.name.fr || product.name) : t('product_detail.not_found');
+  const description = product.description ? (product.description[lang] || product.description.fr || product.description) : '';
   
   // Try parsing images JSON if it's a string, otherwise use the array
   let images = [];
@@ -62,9 +81,9 @@ const ProductDetail = ({ product, related }) => {
         {/* Breadcrumbs & Navigation */}
         <Section className="py-6 md:py-8">
           <nav className="flex items-center gap-2 text-sm text-nature-green/40 font-bold uppercase tracking-widest">
-            <Link href="/" className="hover:text-nature-orange transition-colors">Accueil</Link>
+            <Link href="/" className="hover:text-nature-orange transition-colors">{t('product_detail.breadcrumbs.home')}</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link href="/products" className="hover:text-nature-orange transition-colors">Produits</Link>
+            <Link href="/products" className="hover:text-nature-orange transition-colors">{t('product_detail.breadcrumbs.products')}</Link>
             <ChevronRight className="w-4 h-4" />
             <span className="text-nature-green">{name}</span>
           </nav>
@@ -88,7 +107,7 @@ const ProductDetail = ({ product, related }) => {
                 />
                 <div className="absolute top-8 left-8 bg-nature-white/90 backdrop-blur-md px-4 py-2 rounded-full flex items-center gap-2 shadow-sm">
                   <Leaf className="w-4 h-4 text-nature-green" />
-                  <span className="text-[10px] font-black uppercase tracking-widest text-nature-green">100% Naturel</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-nature-green">{t('product_detail.badge_natural')}</span>
                 </div>
               </motion.div>
               
@@ -132,30 +151,80 @@ const ProductDetail = ({ product, related }) => {
                 </p>
 
                 {/* Selector & Cart */}
-                <div className="flex flex-col sm:flex-row items-center gap-6 mb-12">
-                  <div className="flex items-center bg-nature-beige/30 p-2 rounded-2xl w-full sm:w-auto">
-                    <button 
-                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="w-12 h-12 flex items-center justify-center text-nature-green hover:bg-nature-white rounded-xl transition-all"
-                    >
-                      <Minus className="w-5 h-5" />
-                    </button>
-                    <span className="w-12 text-center font-bold text-xl text-nature-green">{quantity}</span>
-                    <button 
-                      onClick={() => setQuantity(quantity + 1)}
-                      className="w-12 h-12 flex items-center justify-center text-nature-green hover:bg-nature-white rounded-xl transition-all"
-                    >
-                      <Plus className="w-5 h-5" />
-                    </button>
+                {coming_soon_mode ? (
+                  <div className="mb-12 space-y-6">
+                    {/* Launching Soon Badge & Message */}
+                    <div className="p-8 bg-nature-beige/10 rounded-[2.5rem] border border-nature-beige/30">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="w-2 h-2 rounded-full bg-nature-orange animate-pulse" />
+                        <span className="text-[10px] font-black uppercase tracking-widest text-nature-orange">
+                          {t('coming_soon.badge')}
+                        </span>
+                      </div>
+                      <p className="text-base text-nature-green/70 leading-relaxed font-light">
+                        {t('coming_soon.message')}
+                      </p>
+                    </div>
+
+                    {/* CTAs */}
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <Button 
+                        onClick={() => {
+                          axios.post('/analytics/track', {
+                            product_slug: product.slug,
+                            product_id: product.id,
+                            interaction_type: 'cta_click',
+                            language: lang,
+                          }).catch(() => {});
+                          openWaitlist(name);
+                        }}
+                        className="flex-grow py-5 text-sm font-black uppercase tracking-widest"
+                      >
+                        {t('coming_soon.waitlist_form.submit')}
+                      </Button>
+                      <Button 
+                        variant="secondary"
+                        onClick={() => {
+                          axios.post('/analytics/track', {
+                            product_slug: product.slug,
+                            product_id: product.id,
+                            interaction_type: 'cta_click',
+                            language: lang,
+                          }).catch(() => {});
+                          openWaitlist(name);
+                        }}
+                        className="flex-grow py-5 text-sm font-black uppercase tracking-widest bg-transparent border-2 border-nature-green text-nature-green hover:bg-nature-green hover:text-nature-white transition-all duration-300"
+                      >
+                        {t('coming_soon.banner.btn')}
+                      </Button>
+                    </div>
                   </div>
-                  <Button 
-                    onClick={() => addToCart(product, quantity)}
-                    className="w-full py-5 flex items-center justify-center gap-3"
-                  >
-                    <ShoppingBag className="w-5 h-5" />
-                    Ajouter au panier
-                  </Button>
-                </div>
+                ) : (
+                  <div className="flex flex-col sm:flex-row items-center gap-6 mb-12">
+                    <div className="flex items-center bg-nature-beige/30 p-2 rounded-2xl w-full sm:w-auto">
+                      <button 
+                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                        className="w-12 h-12 flex items-center justify-center text-nature-green hover:bg-nature-white rounded-xl transition-all"
+                      >
+                        <Minus className="w-5 h-5" />
+                      </button>
+                      <span className="w-12 text-center font-bold text-xl text-nature-green">{quantity}</span>
+                      <button 
+                        onClick={() => setQuantity(quantity + 1)}
+                        className="w-12 h-12 flex items-center justify-center text-nature-green hover:bg-nature-white rounded-xl transition-all"
+                      >
+                        <Plus className="w-5 h-5" />
+                      </button>
+                    </div>
+                    <Button 
+                      onClick={() => addToCart(product, quantity)}
+                      className="w-full py-5 flex items-center justify-center gap-3"
+                    >
+                      <ShoppingBag className="w-5 h-5" />
+                      {t('product_detail.add_to_cart')}
+                    </Button>
+                  </div>
+                )}
 
                 {/* Info Sections */}
                 <div className="mt-16 space-y-6">
@@ -165,7 +234,7 @@ const ProductDetail = ({ product, related }) => {
                         <div className="w-12 h-12 bg-nature-green/10 rounded-2xl flex items-center justify-center text-nature-green">
                           <Info className="w-6 h-6" />
                         </div>
-                        <h3 className="font-black text-nature-green uppercase tracking-widest text-sm">Ingrédients</h3>
+                        <h3 className="font-black text-nature-green uppercase tracking-widest text-sm">{t('product_detail.ingredients')}</h3>
                       </div>
                       <p className="text-nature-green/60 font-light leading-relaxed italic">
                         {ingredients}
@@ -179,7 +248,7 @@ const ProductDetail = ({ product, related }) => {
                         <div className="w-12 h-12 bg-nature-orange/10 rounded-2xl flex items-center justify-center text-nature-orange">
                           <Sparkles className="w-6 h-6" />
                         </div>
-                        <h3 className="font-black text-nature-green uppercase tracking-widest text-sm">Utilisation</h3>
+                        <h3 className="font-black text-nature-green uppercase tracking-widest text-sm">{t('product_detail.usage')}</h3>
                       </div>
                       <p className="text-nature-green/60 font-light italic leading-relaxed">
                         {usageInstructions}
@@ -196,13 +265,13 @@ const ProductDetail = ({ product, related }) => {
         <Section className="py-24">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="bg-nature-beige/20 p-12 rounded-[3.5rem] border border-nature-beige/50">
-              <h2 className="text-3xl font-black text-nature-green mb-10 tracking-tighter uppercase">Détails Techniques</h2>
+              <h2 className="text-3xl font-black text-nature-green mb-10 tracking-tighter uppercase">{t('product_detail.specs.title')}</h2>
               <div className="space-y-6">
                 {[
-                  { label: "Poids", val: product.weight || 'N/A' },
-                  { label: "Catégorie", val: product.category },
-                  { label: "Disponibilité", val: product.stock > 0 ? "En stock" : "Rupture de stock" },
-                  { label: "Format", val: "Poudre déshydratée" },
+                  { label: t('product_detail.specs.weight'), val: product.weight || t('product_detail.specs.na') },
+                  { label: t('product_detail.specs.category'), val: product.category },
+                  { label: t('product_detail.specs.availability'), val: product.stock > 0 ? t('product_detail.specs.in_stock') : t('product_detail.specs.out_of_stock') },
+                  { label: t('product_detail.specs.format'), val: t('product_detail.specs.format_val') },
                 ].map((spec, i) => (
                   <div key={i} className="flex justify-between py-5 border-b border-nature-green/10">
                     <span className="text-nature-green/40 font-black uppercase text-[10px] tracking-widest">{spec.label}</span>
@@ -213,15 +282,15 @@ const ProductDetail = ({ product, related }) => {
             </div>
 
             <div className="bg-nature-green p-12 rounded-[3.5rem] text-nature-white shadow-premium">
-              <h2 className="text-3xl font-black mb-10 tracking-tighter uppercase">Logistique Oula</h2>
+              <h2 className="text-3xl font-black mb-10 tracking-tighter uppercase">{t('product_detail.logistics.title')}</h2>
               <div className="space-y-10">
                 <div className="flex gap-8">
                   <div className="w-14 h-14 bg-nature-white/10 rounded-2xl flex items-center justify-center flex-shrink-0">
                     <Truck className="w-7 h-7" />
                   </div>
                   <div>
-                    <h4 className="font-black text-sm uppercase tracking-widest mb-3">Expédition Algérie 58 Wilayas</h4>
-                    <p className="text-nature-white/60 font-light text-sm leading-relaxed">Nous expédions vos commandes sous 24h avec nos partenaires logistiques de confiance.</p>
+                    <h4 className="font-black text-sm uppercase tracking-widest mb-3">{t('product_detail.logistics.shipping_title')}</h4>
+                    <p className="text-nature-white/60 font-light text-sm leading-relaxed">{t('product_detail.logistics.shipping_desc')}</p>
                   </div>
                 </div>
                 <div className="flex gap-8">
@@ -229,8 +298,8 @@ const ProductDetail = ({ product, related }) => {
                     <Package className="w-7 h-7" />
                   </div>
                   <div>
-                    <h4 className="font-black text-sm uppercase tracking-widest mb-3">Pack Doypack Premium</h4>
-                    <p className="text-nature-white/60 font-light text-sm leading-relaxed">Emballage hermétique avec zip refermable pour garantir une fraîcheur absolue pendant 12 mois.</p>
+                    <h4 className="font-black text-sm uppercase tracking-widest mb-3">{t('product_detail.logistics.pack_title')}</h4>
+                    <p className="text-nature-white/60 font-light text-sm leading-relaxed">{t('product_detail.logistics.pack_desc')}</p>
                   </div>
                 </div>
               </div>
@@ -242,8 +311,8 @@ const ProductDetail = ({ product, related }) => {
         {related && related.length > 0 && (
           <Section className="py-24 border-t border-nature-beige/50">
             <div className="flex justify-between items-end mb-16">
-              <h2 className="text-4xl md:text-5xl font-black text-nature-green tracking-tighter uppercase">Explorer davantage</h2>
-              <Link href="/products" className="text-nature-orange font-black border-b-2 border-nature-orange text-xs uppercase tracking-[0.2em] pb-1 hover:text-nature-green hover:border-nature-green transition-all">Tout voir</Link>
+              <h2 className="text-4xl md:text-5xl font-black text-nature-green tracking-tighter uppercase">{t('product_detail.related.title')}</h2>
+              <Link href="/products" className="text-nature-orange font-black border-b-2 border-nature-orange text-xs uppercase tracking-[0.2em] pb-1 hover:text-nature-green hover:border-nature-green transition-all">{t('product_detail.related.view_all')}</Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {related.map((p) => (
@@ -253,22 +322,41 @@ const ProductDetail = ({ product, related }) => {
           </Section>
         )}
 
-        {/* Sticky Mobile Add to Cart */}
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-nature-white/95 backdrop-blur-xl border-t border-nature-beige md:hidden z-40">
-          <div className="flex gap-4">
-            <div className="flex items-center bg-nature-beige/30 p-1 rounded-2xl">
-               <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-12 h-12 flex items-center justify-center text-nature-green"><Minus className="w-5 h-5" /></button>
-               <span className="w-10 text-center font-bold text-nature-green">{quantity}</span>
-               <button onClick={() => setQuantity(quantity + 1)} className="w-12 h-12 flex items-center justify-center text-nature-green"><Plus className="w-5 h-5" /></button>
-            </div>
+        {/* Sticky Mobile Add to Cart or Waitlist */}
+        {coming_soon_mode ? (
+          <div className="fixed bottom-0 left-0 right-0 p-4 bg-nature-white/95 backdrop-blur-xl border-t border-nature-beige md:hidden z-40">
             <Button 
-              onClick={() => addToCart(product, quantity)}
-              className="flex-grow py-5 text-[10px] font-black uppercase tracking-widest"
+              onClick={() => {
+                axios.post('/analytics/track', {
+                  product_slug: product.slug,
+                  product_id: product.id,
+                  interaction_type: 'cta_click',
+                  language: lang,
+                }).catch(() => {});
+                openWaitlist(name);
+              }}
+              className="w-full py-5 text-xs font-black uppercase tracking-widest"
             >
-              Ajouter • {product.price * quantity} DA
+              {t('coming_soon.waitlist_form.submit')}
             </Button>
           </div>
-        </div>
+        ) : (
+          <div className="fixed bottom-0 left-0 right-0 p-4 bg-nature-white/95 backdrop-blur-xl border-t border-nature-beige md:hidden z-40">
+            <div className="flex gap-4">
+              <div className="flex items-center bg-nature-beige/30 p-1 rounded-2xl">
+                 <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-12 h-12 flex items-center justify-center text-nature-green"><Minus className="w-5 h-5" /></button>
+                 <span className="w-10 text-center font-bold text-nature-green">{quantity}</span>
+                 <button onClick={() => setQuantity(quantity + 1)} className="w-12 h-12 flex items-center justify-center text-nature-green"><Plus className="w-5 h-5" /></button>
+              </div>
+              <Button 
+                onClick={() => addToCart(product, quantity)}
+                className="flex-grow py-5 text-[10px] font-black uppercase tracking-widest"
+              >
+                {t('product_detail.mobile_add')} • {product.price * quantity} DA
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
   );
 };

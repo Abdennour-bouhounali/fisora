@@ -48,7 +48,7 @@ const Footer = () => {
             <p className="text-nature-beige/60 text-lg leading-relaxed max-w-sm font-light">
               {t('footer.brand_desc')}
             </p>
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
               {socialLinks.map((social, i) => (
                 <motion.a
                   key={i}
@@ -59,7 +59,7 @@ const Footer = () => {
                   <social.icon className="w-5 h-5" />
                 </motion.a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Navigation Links */}
@@ -70,8 +70,8 @@ const Footer = () => {
             <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.path}>
-                  <Link 
-                    to={link.path} 
+                  <Link
+                    to={link.path}
                     className="text-nature-beige/60 hover:text-nature-lemon flex items-center gap-2 group transition-colors"
                   >
                     <span className="w-0 group-hover:w-4 h-[1px] bg-nature-lemon transition-all duration-300" />
@@ -90,8 +90,8 @@ const Footer = () => {
             <ul className="grid grid-cols-1 gap-4">
               {productLinks.map((link) => (
                 <li key={link.name}>
-                  <Link 
-                    to={link.path} 
+                  <Link
+                    to={link.path}
                     className="text-nature-beige/60 hover:text-nature-lemon flex items-center justify-between group py-1 border-b border-nature-white/5 transition-colors"
                   >
                     <span>{link.name}</span>
@@ -114,10 +114,10 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-nature-beige/80 font-medium group-hover:text-nature-white transition-colors">{t('contact.info.address')}</p>
-                  <p className="text-nature-beige/40 text-sm mt-1">Alger, Algérie</p>
+                  <p className="text-nature-beige/40 text-sm mt-1">Toulouse, France</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-4 group">
                 <div className="w-10 h-10 bg-nature-white/5 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-nature-lemon group-hover:text-nature-green transition-all duration-500">
                   <Phone className="w-5 h-5" />
@@ -148,7 +148,7 @@ const Footer = () => {
             <span className="hidden md:block w-1 h-1 bg-nature-white/10 rounded-full" />
             <Link href="/privacy" className="hover:text-nature-lemon transition-colors">Privacy Policy</Link>
           </div>
-          
+
           <div className="flex items-center gap-2 px-4 py-2 bg-nature-white/5 rounded-full border border-nature-white/10">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             <span className="text-xs font-bold tracking-wider uppercase text-nature-beige/60">{t('footer.made_in')}</span>
