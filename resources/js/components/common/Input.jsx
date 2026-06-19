@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Input = ({ 
-  label, 
-  type = 'text', 
-  placeholder, 
-  value, 
-  onChange, 
+const Input = ({
+  label,
+  type = 'text',
+  placeholder,
+  value,
+  onChange,
   name,
   required = false,
   textarea = false,
@@ -14,9 +14,9 @@ const Input = ({
   error,
   ...props
 }) => {
-  const inputStyles = "w-full bg-nature-white border-none rounded-2xl p-6 focus:ring-2 focus:ring-nature-orange transition-all shadow-premium outline-none placeholder:text-nature-green/20 text-nature-green";
+  const inputStyles = "w-full bg-nature-white border border-gray-200 rounded-2xl px-4 py-2 focus:ring-2 focus:ring-nature-orange transition-all shadow-premium outline-none placeholder:text-nature-green/20 text-nature-green";
   const isRtl = document.documentElement.dir === 'rtl';
-  
+
   return (
     <div className={`space-y-3 ${className}`}>
       {label && (
@@ -24,7 +24,7 @@ const Input = ({
           {label} {required && <span className="text-nature-orange">*</span>}
         </label>
       )}
-      
+
       {textarea ? (
         <textarea
           name={name}

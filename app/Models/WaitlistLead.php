@@ -9,13 +9,16 @@ class WaitlistLead extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'phone',
-        'country',
-        'city',
-        'product_interest',
-        'language',
-    ];
+protected $fillable = [
+    'first_name',
+    'last_name',
+    'email',
+    'phone',
+    'street_address',
+    'postal_code',
+    'city',
+    'country',
+    'product_interest',
+    'language',
+];
 }

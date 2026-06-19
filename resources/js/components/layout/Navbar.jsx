@@ -38,9 +38,8 @@ const Navbar = () => {
   const currentLang = languages.find(l => l.code === i18n.language) || languages[0];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${
-      isScrolled ? 'py-4 bg-nature-white/80 backdrop-blur-xl shadow-premium' : 'py-8 bg-transparent'
-    }`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'py-4 bg-nature-white/80 backdrop-blur-xl shadow-premium' : 'py-4 bg-gradient-to-b from-nature-white/80 via-nature-white/50 to-transparent   '
+      }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -55,9 +54,8 @@ const Navbar = () => {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className={`relative text-sm font-bold tracking-widest uppercase transition-opacity duration-300 ${
-                    url === link.path ? 'text-nature-orange' : 'text-nature-green opacity-60 hover:opacity-100'
-                  }`}
+                  className={`relative text-sm font-bold tracking-widest uppercase transition-opacity duration-300 ${url === link.path ? 'text-nature-orange' : 'text-nature-green'
+                    }`}
                 >
                   {t(link.name)}
                   {url === link.path && (
@@ -71,7 +69,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
               {/* Cart Button */}
               {!coming_soon_mode && (
-                <button 
+                <button
                   onClick={() => setIsCartOpen(true)}
                   className="relative p-3 bg-nature-beige/30 rounded-xl text-nature-green hover:bg-nature-green hover:text-nature-white transition-all duration-300 group"
                 >
@@ -92,7 +90,7 @@ const Navbar = () => {
               )}
 
               <div className="relative">
-                <button 
+                <button
                   onClick={() => setLangOpen(!langOpen)}
                   className="flex items-center gap-2 bg-nature-beige/30 px-4 py-2 rounded-xl text-sm font-bold text-nature-green hover:bg-nature-beige/50 transition-all"
                 >
@@ -113,9 +111,8 @@ const Navbar = () => {
                         <button
                           key={lang.code}
                           onClick={() => changeLanguage(lang.code)}
-                          className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${
-                            i18n.language === lang.code ? 'bg-nature-green text-nature-white' : 'text-nature-green/60 hover:bg-nature-beige/30'
-                          }`}
+                          className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition-all ${i18n.language === lang.code ? 'bg-nature-green text-nature-white' : 'text-nature-green/60 hover:bg-nature-beige/30'
+                            }`}
                         >
                           {lang.label}
                         </button>
@@ -130,7 +127,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 md:hidden">
             {!coming_soon_mode && (
-              <button 
+              <button
                 onClick={() => setIsCartOpen(true)}
                 className="relative p-3 bg-nature-beige/30 rounded-xl text-nature-green"
               >
@@ -164,14 +161,13 @@ const Navbar = () => {
                   key={link.path}
                   href={link.path}
                   onClick={() => setTimeout(() => setIsOpen(false), 150)}
-                  className={`block text-2xl font-bold ${
-                    url === link.path ? 'text-nature-orange' : 'text-nature-green'
-                  }`}
+                  className={`block text-2xl font-bold ${url === link.path ? 'text-nature-orange' : 'text-nature-green'
+                    }`}
                 >
                   {t(link.name)}
                 </Link>
               ))}
-              
+
               <div className="pt-8 border-t border-nature-beige/30">
                 <p className="text-xs font-black uppercase tracking-widest text-nature-green/30 mb-4">Langue</p>
                 <div className="flex gap-3">
@@ -179,9 +175,8 @@ const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-                        i18n.language === lang.code ? 'bg-nature-green text-nature-white shadow-premium' : 'bg-nature-beige/30 text-nature-green'
-                      }`}
+                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${i18n.language === lang.code ? 'bg-nature-green text-nature-white shadow-premium' : 'bg-nature-beige/30 text-nature-green'
+                        }`}
                     >
                       {lang.label}
                     </button>

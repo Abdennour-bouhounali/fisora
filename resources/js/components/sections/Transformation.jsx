@@ -98,6 +98,7 @@ const Transformation = () => {
 
   return (
     <section
+      id="how-it-works"
       ref={containerRef}
       className="relative"
       style={{ height: `${steps.length * 90}vh` }}

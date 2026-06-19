@@ -48,11 +48,18 @@ const WaitlistModal = () => {
   const productOptions = getProductOptions();
 
   const { data, setData, post, processing, errors, reset } = useForm({
-    name: '',
+    first_name: '',
+    last_name: '',
+
     email: '',
     phone: '',
-    country: 'France',
+
+    street_address: '',
+    postal_code: '',
+
     city: '',
+    country: 'France',
+
     product_interest: [],
     language: i18n.language,
   });
@@ -217,8 +224,8 @@ const WaitlistModal = () => {
                                 type="button"
                                 onClick={() => handleSelectProduct(p.value)}
                                 className={`relative p-3 rounded-xl border-2 text-sm font-semibold transition-all ${selected
-                                    ? 'border-nature-orange bg-nature-orange/10 scale-[1.03]'
-                                    : 'border-transparent bg-nature-beige/20 hover:bg-nature-beige/40'
+                                  ? 'border-nature-orange bg-nature-orange/10 scale-[1.03]'
+                                  : 'border-transparent bg-nature-beige/20 hover:bg-nature-beige/40'
                                   }`}
                               >
                                 {p.label}
@@ -238,25 +245,73 @@ const WaitlistModal = () => {
                   <form onSubmit={handleSubmit} className="space-y-3">
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <Input
-                        label="Name"
-                        value={data.name}
-                        onChange={(e) => setData('name', e.target.value)}
-                      />
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 
-                      <Input
-                        label="Email"
-                        value={data.email}
-                        onChange={(e) => setData('email', e.target.value)}
-                      />
+                        <Input
+                          label="First Name"
+                          value={data.first_name}
+                          onChange={(e) => setData('first_name', e.target.value)}
+                        />
+
+                        <Input
+                          label="Last Name"
+                          value={data.last_name}
+                          onChange={(e) => setData('last_name', e.target.value)}
+                        />
+
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+                        <Input
+                          label="Email"
+                          type="email"
+                          value={data.email}
+                          onChange={(e) => setData('email', e.target.value)}
+                        />
+
+                        <Input
+                          label="Phone"
+                          value={data.phone}
+                          onChange={(e) => setData('phone', e.target.value)}
+                        />
+
+                      </div>
                     </div>
+                    <Input
+                      label="Street Address"
+                      placeholder="12 bis Rue de la République"
+                      value={data.street_address}
+                      onChange={(e) =>
+                        setData('street_address', e.target.value)
+                      }
+                    />
+                    <div className="grid grid-cols-3 sm:grid-cols-3 gap-3">
+                      <Input
+                        label="Country"
+                        value={data.country}
+                        onChange={(e) =>
+                          setData('country', e.target.value)
+                        }
+                      />
+                      <Input
+                        label="Postal Code"
+                        placeholder="75001"
+                        value={data.postal_code}
+                        onChange={(e) =>
+                          setData('postal_code', e.target.value)
+                        }
+                      />
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <Input
                         label="City"
+                        placeholder="Paris"
                         value={data.city}
-                        onChange={(e) => setData('city', e.target.value)}
+                        onChange={(e) =>
+                          setData('city', e.target.value)
+                        }
                       />
+
                     </div>
 
                     {/* CTA */}

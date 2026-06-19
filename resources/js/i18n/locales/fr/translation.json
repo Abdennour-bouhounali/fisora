@@ -12,8 +12,8 @@
   },
   "hero_section": {
     "title_p1": "Vrais Ingrédients.",
-    "title_p2": "Cuisine Intelligente.",
-    "subtitle": "FISORA aide à cuisiner et manger plus intelligemment, en transformant de vrais fruits, légumes et herbes méditerranéens en essentiels de garde-manger concentrés qui rendent les repas quotidiens plus faciles, sains et pratiques.",
+    "title_p2": "Cuisine Simplifiée.",
+    "subtitle": "FISORA transforme les fruits, légumes et plantes en ingrédients concentrés — pensés pour une cuisine plus simple, plus rapide et plus saine, sans compromis sur la qualité.",
     "btn_shop": "Découvrir les ingrédients",
     "btn_how": "Comment ça marche",
     "available": "Essences disponibles",
@@ -25,10 +25,10 @@
       "base": "Base Méditerranéenne"
     },
     "badges": {
-      "b1": "100% Vrais Ingrédients",
-      "b2": "Sans Additifs",
-      "b3": "Naturellement Déshydraté",
-      "b4": "Origine Méditerranéenne"
+      "b1": "Facile à utiliser",
+      "b2": "Plus rapide",
+      "b3": "Plus sain",
+      "b4": "Sans additifs inutiles"
     }
   },
   "home_page": {
@@ -94,12 +94,37 @@
     "mobile_add": "Ajouter"
   },
   "about": {
-    "title": "Tradition & Pureté",
-    "subtitle": "Notre Histoire",
-    "mission_title": "Notre Mission",
-    "mission_text": "FISORA valorise les saveurs naturelles à travers des poudres de fruits, légumes et plantes soigneusement séchés. Notre mission est d’offrir des produits simples, naturels et pratiques pour la cuisine et les boissons du quotidien.",
+    "title": "Notre Histoire",
+    "subtitle": "Tradition & Simplicité Moderne",
+    "mission_text": "FISORA transforme les fruits, légumes et plantes en ingrédients concentrés, pensés pour une cuisine plus simple, plus rapide et plus saine.",
+    "mission_p1": "Notre mission est claire :",
+    "mission_p2": "rendre la cuisine du quotidien plus facile, sans compromis sur la qualité des ingrédients.",
+    "mission_p3": "Nous croyons qu’une bonne alimentation ne doit pas être compliquée. Elle doit être accessible, pratique et fidèle à la nature.",
+    "natural_heritage": "FISORA — Natural Heritage",
+    "natural_heritage_desc": "À travers des procédés de déshydratation soigneusement maîtrisés, nous capturons l’essence des ingrédients naturels dans un format concentré et facile à utiliser.",
+    "objectives_title": "Chaque produit FISORA est conçu pour répondre à trois objectifs essentiels :",
+    "objectives": {
+      "obj1_title": "Facile à utiliser",
+      "obj1_desc": "prêt en quelques secondes, sans préparation complexe",
+      "obj2_title": "Plus rapide",
+      "obj2_desc": "réduit le temps de coupe, de préparation et de cuisson",
+      "obj3_title": "Plus sain",
+      "obj3_desc": "issu d’ingrédients réels, sans additifs inutiles"
+    },
     "story_title": "Une Passion Transmise",
-    "story_text": "L'aventure a commencé avec une idée simple : capturer l'essence de la nature algérienne dans un format pratique sans perdre une miette de sa richesse. Chaque sachet de FISORA raconte une histoire de patience, de soleil et de respect pour la terre.",
+    "story_p1": "L’aventure FISORA est née d’une idée simple :",
+    "story_p2": "garder la richesse de la nature, tout en supprimant ce qui rend la cuisine lente et compliquée.",
+    "story_p3": "Chaque sachet représente un équilibre entre :",
+    "story_list": {
+      "l1": "la nature et la modernité",
+      "l2": "la tradition et l’efficacité",
+      "l3": "le goût et la simplicité"
+    },
+    "story_p4": "Nous ne cherchons pas à remplacer la cuisine traditionnelle, mais à la rendre plus fluide, plus accessible et plus adaptée au rythme d’aujourd’hui.",
+    "vision_title": "Notre Vision",
+    "vision_p1": "Nous croyons en une nouvelle manière de cuisiner :",
+    "vision_p2": "une cuisine plus rapide, plus simple et plus saine, sans perdre l’essence des ingrédients naturels.",
+    "vision_p3": "FISORA s’adresse à ceux qui veulent mieux manger, sans passer plus de temps en cuisine.",
     "process": {
       "title": "Notre Processus Qualité",
       "subtitle": "Chaque étape est une promesse de pureté et d'excellence.",

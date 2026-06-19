@@ -15,16 +15,29 @@ class LeadController extends Controller
      */
     public function storeWaitlist(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:50',
-            'country' => 'required|string|max:100',
-            'city' => 'required|string|max:100',
-            'product_interest' => 'required|string|max:255',
-            'language' => 'required|string|max:10',
-        ]);
+$validated = $request->validate([
+    'first_name' => 'required|string|max:255',
+    'last_name' => 'required|string|max:255',
 
+    'email' => 'required|email|max:255',
+    'phone' => 'nullable|string|max:50',
+
+    'street_address' => 'required|string|max:255',
+
+    'postal_code' => [
+        'required',
+        'regex:/^[0-9]{5}$/'
+    ],
+
+    'city' => 'required|string|max:100',
+    'country' => 'required|string|max:100',
+
+    'product_interest' => 'required|array|min:1',
+    'language' => 'required|string|max:10',
+]);
+$validated['product_interest'] = json_encode(
+    $validated['product_interest']
+);
         $lead = WaitlistLead::create($validated);
 
         // Track waitlist registration as a cta_click or waitlist interaction if a matching product is found
