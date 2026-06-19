@@ -11,25 +11,27 @@
     "cta": "Explore our products"
   },
   "hero_section": {
-    "title_p1": "Real Ingredients.",
-    "title_p2": "Simpler Cooking.",
-    "subtitle": "FISORA transforms fruits, vegetables, and plants into concentrated ingredients — designed for cooking that is simpler, faster, and healthier, without compromising on quality.",
-    "btn_shop": "Shop Ingredients",
-    "btn_how": "See How It Works",
-    "available": "Available Essences",
-    "essences": {
-      "garlic": "Garlic",
-      "onion": "Purple Onion",
-      "mint": "Mint",
-      "strawberry": "Strawberry",
-      "base": "Mediterranean Base"
-    },
-    "badges": {
-      "b1": "Easy to use",
-      "b2": "Faster",
-      "b3": "Healthier",
-      "b4": "No unnecessary additives"
-    }
+    "badge": "100% Natural • No Additives",
+    "title_p1": "Real Flavor.",
+    "title_p2": "Zero Waste.",
+    "subtitle_p1": "More flavor.",
+    "subtitle_p2": "Less preparation.",
+    "cta": "Discover FISORA"
+  },
+  "why_fisora": {
+    "section_title": "Why FISORA?",
+    "card1_value": "90%",
+    "card1_title": "Less Preparation",
+    "card1_desc": "Ready in seconds",
+    "card2_value": "100%",
+    "card2_title": "Real Ingredients",
+    "card2_desc": "No unnecessary additives",
+    "card3_title": "Concentrated Flavor",
+    "card3_desc": "Flavor stays. Water leaves.",
+    "strip1": "100% Natural",
+    "strip2": "Time Saving",
+    "strip3": "Waste Reduction",
+    "strip4": "Preserved Flavor"
   },
   "home_page": {
     "marquee": {
@@ -208,9 +210,9 @@
     },
     "info": {
       "title": "Contact Details",
-      "address": "Algiers, Algeria",
-      "phone": "+213 555 00 00 00",
-      "email": "contact@fisora.com",
+      "address": "Toulouse, France",
+      "phone": "+33 (0) 7 83 06 94 65",
+      "email": "contact@fisora.shop",
       "social": "Follow Us"
     }
   },

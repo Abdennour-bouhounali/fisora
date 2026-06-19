@@ -93,9 +93,9 @@ const Contact = () => {
               <h3 className="text-sm font-black uppercase tracking-[0.3em] text-nature-green/40 mb-8">Coordonnées</h3>
               <div className="space-y-10">
                 {[
-                  { icon: MapPin, label: "Adresse", value: "Toulouse, France" },
-                  { icon: Phone, label: "Téléphone", value: "+33 (0) 7 83 06 94 65" },
-                  { icon: Mail, label: "Email", value: "contact@fisora.shop" },
+                  { icon: MapPin, label: t('contact.info.address_label', 'Adresse'), value: t('contact.info.address') },
+                  { icon: Phone, label: t('contact.info.phone_label', 'Téléphone'), value: t('contact.info.phone') },
+                  { icon: Mail, label: t('contact.info.email_label', 'Email'), value: t('contact.info.email') },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6 group">
                     <div className="w-14 h-14 bg-nature-beige/30 rounded-2xl flex items-center justify-center group-hover:bg-nature-green group-hover:text-nature-white transition-all duration-500">

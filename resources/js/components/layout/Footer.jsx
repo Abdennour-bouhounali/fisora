@@ -114,7 +114,6 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-nature-beige/80 font-medium group-hover:text-nature-white transition-colors">{t('contact.info.address')}</p>
-                  <p className="text-nature-beige/40 text-sm mt-1">Toulouse, France</p>
                 </div>
               </div>
 

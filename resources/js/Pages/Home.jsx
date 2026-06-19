@@ -13,6 +13,8 @@ import Button from '../components/common/Button';
 import { useCurrency } from '../context/CurrencyContext';
 import axios from 'axios';
 
+import WhyFisora from '../components/sections/WhyFisora';
+
 const USAGES = [
   { id: 'culinary', img: '/images/usages/culinary.png', title: 'Culinary Arts', desc: 'Elevate your cooking with concentrated flavors.' },
   { id: 'wellness', img: '/images/usages/wellness.png', title: 'Wellness', desc: 'Natural ingredients for your daily health rituals.' },
@@ -36,6 +38,7 @@ const Home = ({ featured_products = [] }) => {
     <div className="overflow-clip">
       <Head title={t('seo.home_title') || "Accueil"} />
       <Hero />
+      <WhyFisora />
 
       {coming_soon_mode && (
         <section className="bg-nature-beige/20 py-16 border-y border-nature-beige/50">

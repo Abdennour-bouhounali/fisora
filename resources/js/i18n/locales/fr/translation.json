@@ -11,25 +11,27 @@
     "cta": "Découvrir nos produits"
   },
   "hero_section": {
-    "title_p1": "Vrais Ingrédients.",
-    "title_p2": "Cuisine Simplifiée.",
-    "subtitle": "FISORA transforme les fruits, légumes et plantes en ingrédients concentrés — pensés pour une cuisine plus simple, plus rapide et plus saine, sans compromis sur la qualité.",
-    "btn_shop": "Découvrir les ingrédients",
-    "btn_how": "Comment ça marche",
-    "available": "Essences disponibles",
-    "essences": {
-      "garlic": "Ail",
-      "onion": "Oignon Rouge",
-      "mint": "Menthe",
-      "strawberry": "Fraise",
-      "base": "Base Méditerranéenne"
-    },
-    "badges": {
-      "b1": "Facile à utiliser",
-      "b2": "Plus rapide",
-      "b3": "Plus sain",
-      "b4": "Sans additifs inutiles"
-    }
+    "badge": "100% Naturel • Sans Additifs",
+    "title_p1": "Le Goût Réel.",
+    "title_p2": "Sans le Gaspillage.",
+    "subtitle_p1": "Plus de saveur.",
+    "subtitle_p2": "Moins de préparation.",
+    "cta": "Découvrir FISORA"
+  },
+  "why_fisora": {
+    "section_title": "Pourquoi FISORA ?",
+    "card1_value": "90%",
+    "card1_title": "Moins de Préparation",
+    "card1_desc": "Prêt en quelques secondes",
+    "card2_value": "100%",
+    "card2_title": "Ingrédients Réels",
+    "card2_desc": "Sans additifs inutiles",
+    "card3_title": "Saveur Concentrée",
+    "card3_desc": "Le goût reste. L'eau disparaît.",
+    "strip1": "100% Naturel",
+    "strip2": "Gain de Temps",
+    "strip3": "Réduction du Gaspillage",
+    "strip4": "Saveur Préservée"
   },
   "home_page": {
     "marquee": {
@@ -208,9 +210,9 @@
     },
     "info": {
       "title": "Nos Coordonnées",
-      "address": "Alger, Algérie",
-      "phone": "+213 555 00 00 00",
-      "email": "contact@fisora.com",
+      "address": "Toulouse, France",
+      "phone": "+33 (0) 7 83 06 94 65",
+      "email": "contact@fisora.shop",
       "social": "Suivez-nous"
     }
   },
