@@ -6,10 +6,17 @@ import { useTranslation } from 'react-i18next';
 import Button from '../common/Button';
 import { router } from '@inertiajs/react';
 import { getImageUrl } from '../../utils/formatters';
+import { useCurrency } from '../../context/CurrencyContext';
+import { EUR_TO_DA } from '../../context/CurrencyContext';
 
 const CartDrawer = () => {
   const { cart, isCartOpen, setIsCartOpen, removeFromCart, updateQty, cartTotal } = useCart();
   const { t, i18n } = useTranslation();
+  const { formatPrice, currency } = useCurrency();
+
+  const freeShippingThreshold = currency === 'EUR'
+    ? (5000 / EUR_TO_DA).toFixed(0) + ' €'
+    : '5 000 DA';
 
   const handleCheckout = () => {
     setIsCartOpen(false);
@@ -91,7 +98,7 @@ const CartDrawer = () => {
                           <span className="w-8 text-center text-xs font-bold">{item.qty}</span>
                           <button onClick={() => updateQty(item.id, item.qty + 1)} className="p-1 hover:bg-nature-white rounded-lg transition-colors"><Plus className="w-3 h-3" /></button>
                         </div>
-                        <span className="font-bold text-nature-green italic">{item.price * item.qty} DA</span>
+                        <span className="font-bold text-nature-green italic">{formatPrice(item.price * item.qty)}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -103,7 +110,7 @@ const CartDrawer = () => {
               <div className="p-8 bg-nature-white border-t border-nature-beige space-y-6">
                 <div className="flex justify-between items-end">
                   <span className="text-nature-green/40 font-bold uppercase tracking-widest text-xs">Sous-total</span>
-                  <span className="text-4xl font-black text-nature-green tracking-tighter italic">{cartTotal} DA</span>
+                  <span className="text-4xl font-black text-nature-green tracking-tighter italic">{formatPrice(cartTotal)}</span>
                 </div>
                 <Button 
                   onClick={handleCheckout}
@@ -113,7 +120,7 @@ const CartDrawer = () => {
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                 </Button>
                 <p className="text-[10px] text-center text-nature-green/40 font-bold uppercase tracking-widest">
-                  Livraison gratuite à partir de 5000 DA
+                  Livraison gratuite à partir de {freeShippingThreshold}
                 </p>
               </div>
             )}

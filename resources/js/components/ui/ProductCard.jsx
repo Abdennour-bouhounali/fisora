@@ -9,6 +9,7 @@ import { useWaitlist } from '../../context/WaitlistContext';
 import axios from 'axios';
 
 import { getImageUrl } from '../../utils/formatters';
+import { useCurrency } from '../../context/CurrencyContext';
 
 const ProductCard = ({ product, variants, view = 'grid' }) => {
   const { t, i18n } = useTranslation();
@@ -16,6 +17,7 @@ const ProductCard = ({ product, variants, view = 'grid' }) => {
   const { openWaitlist } = useWaitlist();
   const { props } = usePage();
   const coming_soon_mode = !!props.coming_soon_mode;
+  const { formatPrice } = useCurrency();
 
   const lang = i18n.language;
   const name = product.name ? (product.name[lang] || product.name.fr) : t('products.title');
@@ -48,7 +50,7 @@ const ProductCard = ({ product, variants, view = 'grid' }) => {
         <div className="mt-10 px-4">
           <div className="flex justify-between items-start mb-4">
             <h3 className="text-3xl font-bold text-nature-green group-hover:text-nature-orange transition-colors uppercase tracking-tighter">{name}</h3>
-            <span className="text-xl font-bold italic text-nature-orange">{product.price} DA</span>
+            <span className="text-xl font-bold italic text-nature-orange">{formatPrice(product.price)}</span>
           </div>
           <p className="text-lg text-nature-green/60 font-light leading-relaxed mb-8 line-clamp-2">
             {description}

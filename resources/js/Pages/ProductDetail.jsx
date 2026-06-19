@@ -22,6 +22,7 @@ import MainLayout from '../components/layout/MainLayout';
 import { useCart } from '../context/CartContext';
 import { useWaitlist } from '../context/WaitlistContext';
 import { getImageUrl } from '../utils/formatters';
+import { useCurrency } from '../context/CurrencyContext';
 import axios from 'axios';
 
 const ProductDetail = ({ product, related }) => {
@@ -33,6 +34,7 @@ const ProductDetail = ({ product, related }) => {
   const coming_soon_mode = !!props.coming_soon_mode;
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+  const { formatPrice } = useCurrency();
 
   useEffect(() => {
     if (coming_soon_mode && product) {
@@ -140,7 +142,7 @@ const ProductDetail = ({ product, related }) => {
                   {name}
                 </h1>
                 <div className="flex items-center gap-4 mb-8">
-                  <span className="text-3xl font-bold italic text-nature-orange">{product.price} DA</span>
+                  <span className="text-3xl font-bold italic text-nature-orange">{formatPrice(product.price)}</span>
                   {product.badges && product.badges.map((badge, i) => (
                     <span key={i} className="bg-nature-green/10 text-nature-green px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">{badge}</span>
                   ))}
@@ -352,7 +354,7 @@ const ProductDetail = ({ product, related }) => {
                 onClick={() => addToCart(product, quantity)}
                 className="flex-grow py-5 text-[10px] font-black uppercase tracking-widest"
               >
-                {t('product_detail.mobile_add')} • {product.price * quantity} DA
+                {t('product_detail.mobile_add')} • {formatPrice(product.price * quantity)}
               </Button>
             </div>
           </div>

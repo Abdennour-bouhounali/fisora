@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useScroll } from '../../hooks/useScroll';
 import { NAV_LINKS } from '../../constants';
 import { useCart } from '../../context/CartContext';
+import CurrencyToggle from '../common/CurrencyToggle';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -88,6 +89,9 @@ const Navbar = () => {
                   </AnimatePresence>
                 </button>
               )}
+
+              {/* Currency Toggle */}
+              <CurrencyToggle />
 
               <div className="relative">
                 <button
@@ -183,6 +187,12 @@ const Navbar = () => {
                   ))}
                 </div>
               </div>
+
+              <div className="pt-4">
+                <p className="text-xs font-black uppercase tracking-widest text-nature-green/30 mb-4">Devise</p>
+                <CurrencyToggle />
+              </div>
+
             </div>
           </motion.div>
         )}

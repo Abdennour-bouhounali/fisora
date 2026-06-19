@@ -18,6 +18,8 @@ import Input from '../components/common/Input';
 import MainLayout from '../components/layout/MainLayout';
 import { useCart } from '../context/CartContext';
 import { getImageUrl } from '../utils/formatters';
+import { useCurrency } from '../context/CurrencyContext';
+
 
 const WILAYAS = [
   "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Béchar", "Blida", "Bouira",
@@ -31,6 +33,7 @@ const Checkout = () => {
   const { t, i18n } = useTranslation();
   const { cart, cartTotal, clearCart } = useCart();
   const [isSuccess, setIsSuccess] = useState(false);
+  const { formatPrice } = useCurrency();
 
   const { data, setData, post, processing, errors } = useForm({
     customer_name: '',
@@ -246,10 +249,10 @@ const Checkout = () => {
                             <h4 className="font-bold text-sm uppercase tracking-tighter line-clamp-1">
                               {typeof item.name === 'object' ? (item.name[i18n.language] || item.name.fr) : item.name}
                             </h4>
-                            <span className="text-xs opacity-60 font-light tracking-widest">{item.qty} x {item.price} DA</span>
+                            <span className="text-xs opacity-60 font-light tracking-widest">{item.qty} x {formatPrice(item.price)}</span>
                           </div>
                         </div>
-                        <span className="font-bold italic text-sm">{item.price * item.qty} DA</span>
+                        <span className="font-bold italic text-sm">{formatPrice(item.price * item.qty)}</span>
                       </div>
                     ))}
                     {cart.length === 0 && <p className="opacity-60 italic font-light">Votre panier est vide.</p>}
@@ -258,15 +261,15 @@ const Checkout = () => {
                   <div className="space-y-4 border-t border-white/10 pt-8">
                     <div className="flex justify-between text-sm">
                       <span className="opacity-60 uppercase tracking-[0.2em] font-bold">Sous-total</span>
-                      <span className="font-bold italic">{cartTotal} DA</span>
+                      <span className="font-bold italic">{formatPrice(cartTotal)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="opacity-60 uppercase tracking-[0.2em] font-bold">Livraison</span>
-                      <span className="font-bold italic">{deliveryFee} DA</span>
+                      <span className="font-bold italic">{formatPrice(deliveryFee)}</span>
                     </div>
                     <div className="flex justify-between text-3xl font-black pt-4 border-t border-white/20">
                       <span className="uppercase tracking-tighter">Total</span>
-                      <span className="italic">{grandTotal} DA</span>
+                      <span className="italic">{formatPrice(grandTotal)}</span>
                     </div>
                   </div>
 

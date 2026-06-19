@@ -6,6 +6,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
 import { CartProvider } from './context/CartContext';
 import { WaitlistProvider } from './context/WaitlistContext';
+import { CurrencyProvider } from './context/CurrencyContext';
 
 import MainLayout from './components/layout/MainLayout';
 import AdminLayout from './components/admin/AdminLayout';
@@ -30,11 +31,13 @@ createInertiaApp({
     setup({ el, App, props }) {
         const root = createRoot(el);
         root.render(
-            <WaitlistProvider>
-                <CartProvider>
-                    <App {...props} />
-                </CartProvider>
-            </WaitlistProvider>
+            <CurrencyProvider>
+                <WaitlistProvider>
+                    <CartProvider>
+                        <App {...props} />
+                    </CartProvider>
+                </WaitlistProvider>
+            </CurrencyProvider>
         );
     },
     progress: {

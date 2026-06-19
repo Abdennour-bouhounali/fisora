@@ -10,6 +10,7 @@ import Ecosystem from '../components/sections/Ecosystem';
 import FeatureShowcase from '../components/sections/FeatureShowcase';
 import { useWaitlist } from '../context/WaitlistContext';
 import Button from '../components/common/Button';
+import { useCurrency } from '../context/CurrencyContext';
 import axios from 'axios';
 
 const USAGES = [
@@ -24,6 +25,7 @@ const Home = ({ featured_products = [] }) => {
   const { props } = usePage();
   const coming_soon_mode = !!props.coming_soon_mode;
   const isRtl = i18n.language === 'ar';
+  const { formatPrice } = useCurrency();
 
   const getLocalizedName = (product) => {
     const lang = i18n.language;
@@ -134,7 +136,7 @@ const Home = ({ featured_products = [] }) => {
                     )}
                   </div>
                   <h3 className="text-xl font-bold text-nature-green">{getLocalizedName(product)}</h3>
-                  <p className="text-nature-green/60">{product.price} {t('products.price') || 'DA'}</p>
+                  <p className="text-nature-green/60">{formatPrice(product.price)}</p>
                 </Link>
               ))
             )}
